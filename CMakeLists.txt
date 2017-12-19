@@ -6,7 +6,12 @@ if(COMMAND cmake_policy)
 endif(COMMAND cmake_policy)
 
 
-set (ROADXML_VERSION 242)
+IF(WIN32)
+	set (ROADXML_VERSION 242)
+ELSE(WIN32)
+	set (ROADXML_VERSION 2.4.2)
+	set (ROADXML_SOVERSION 2.4)
+ENDIF(WIN32)
 
 PROJECT(RoadXML)
 
@@ -17,11 +22,6 @@ IF(WIN32)
 	ENDIF(MSVC)
 
 	ADD_DEFINITIONS(-DWIN32)
-
-# Change this to your xerces installation folder
-	SET(XERCESC_DIR "C:\\Xerces" CACHE PATH "Choose xercesc path")
-	ELSE(WIN32)
-	SET(XERCESC_DIR "/usr")
 ENDIF(WIN32)
 
 
@@ -34,4 +34,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/")
 ADD_SUBDIRECTORY(source)
 ADD_SUBDIRECTORY(examples)
 
-set_target_properties(RoadXML PROPERTIES SUFFIX "${ROADXML_VERSION}.dll")
+IF(WIN32)
+	set_target_properties(RoadXML PROPERTIES SUFFIX "${ROADXML_VERSION}.dll")
+ELSE(WIN32)
+	set_target_properties(RoadXML PROPERTIES VERSION ${ROADXML_VERSION})
+	set_target_properties(RoadXML PROPERTIES SOVERSION ${ROADXML_SOVERSION})
+ENDIF(WIN32)

@@ -1,10 +1,11 @@
 
 
 IF(WIN32)
-ADD_DEFINITIONS(-DSTK_EXPORTS)
-set (FILETOOLS WIN_FileTools.cpp)
+	ADD_DEFINITIONS(-DSTK_EXPORTS)
+	set (FILETOOLS WIN_FileTools.cpp)
+	TARGET_LINK_LIBRARIES(stk Shlwapi.lib Dbghelp.lib PsApi.lib)
 ELSE(WIN32)
-set (FILETOOLS UNIX_FileTools.cpp)
+	set (FILETOOLS UNIX_FileTools.cpp)
 ENDIF(WIN32)
 
 
@@ -51,4 +52,5 @@ ADD_LIBRARY(stk SHARED
 	Vector3.cpp
 )
 
-TARGET_LINK_LIBRARIES(stk Shlwapi.lib Dbghelp.lib PsApi.lib)
+install (TARGETS stk DESTINATION lib)
+install (DIRECTORY ../../include/stk DESTINATION include)
