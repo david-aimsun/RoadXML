@@ -2,7 +2,7 @@
 
 #include "stk/Matrix.h"
 #include "stk/Vector2.h"
-#include "math.h"
+#include <math.h>
 
 namespace stk
 {

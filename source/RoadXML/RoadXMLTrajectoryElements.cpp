@@ -127,7 +127,7 @@ IDOMElement* RoadXML::TrajectoryElement::BuildXMLElement(IDOMParser* parser)
 
 	elementOut->SetStringAttribute(kNameTag, myName);
 
-	std::vector<CountedPtr<TrajectoryPieceElement>>::iterator itTrajectoryPiece = myTrajectoryPieceArray.begin();
+	std::vector<CountedPtr<TrajectoryPieceElement> >::iterator itTrajectoryPiece = myTrajectoryPieceArray.begin();
 	for(; itTrajectoryPiece != myTrajectoryPieceArray.end(); ++itTrajectoryPiece)
 	{
 		elementOut->AddChild( (*itTrajectoryPiece).Get()->BuildXMLElement(parser) );

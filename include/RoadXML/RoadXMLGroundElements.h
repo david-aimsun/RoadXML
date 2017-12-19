@@ -88,7 +88,7 @@ namespace RoadXML
 
 		const RoughnessType									GetRoughnessType() const		{ return mRoughnessType; }
 		const CountedPtr<AnalyticElement>&						GetAnalytic() const				{ return mAnalytic; }
-		const std::vector<CountedPtr<Point2x2DElement>>&		Get2x2DPointArray()	const		{ return m2x2DPointArray; }
+		const std::vector<CountedPtr<Point2x2DElement> >&		Get2x2DPointArray()	const		{ return m2x2DPointArray; }
 		bool													GetIsPatternRepeated() const	{ return mIsPatternRepeated; }
 		const CountedPtr<Point2x2DElement>&						GetScale2x2DPoint() const		{ return mScale; }
 		const CountedPtr<Point2x2DElement>&						GetOffset2x2DPoint() const		{ return mOffset; }
@@ -110,7 +110,7 @@ namespace RoadXML
 	protected:
 		RoughnessType mRoughnessType;
 		CountedPtr<AnalyticElement> mAnalytic;
-		std::vector<CountedPtr<Point2x2DElement>> m2x2DPointArray;
+		std::vector<CountedPtr<Point2x2DElement> > m2x2DPointArray;
 		CountedPtr<Point2x2DElement> mScale;
 		CountedPtr<Point2x2DElement> mOffset;
 		bool mIsPatternRepeated;
