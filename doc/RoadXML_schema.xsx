@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Ce fichier est automatiquement généré par le Concepteur de schémas XML. Il contient des informations de disposition pour les composants dans l'aire du concepteur.-->
+<XSDDesignerLayout Style="LeftRight" layoutVersion="2" viewPortLeft="1267" viewPortTop="184132" zoom="90">
+    <RoadXML_XmlElement left="1317" top="43276" width="5291" height="2675" selected="0" zOrder="1" index="0" expanded="1">
+        <Network_XmlElement left="7242" top="42777" width="8731" height="3674" selected="0" zOrder="2" index="0" expanded="1">
+            <SubNetworks_XmlElement left="16607" top="12297" width="5292" height="3176" selected="0" zOrder="4" index="0" expanded="1">
+                <SubNetwork_XmlElement left="22533" top="12297" width="5292" height="3176" selected="0" zOrder="6" index="0" expanded="1">
+                    <ExternalTerrain_XmlElement left="28459" top="-27306" width="5292" height="3176" selected="0" zOrder="15" index="0" expanded="0" />
+                    <ExternalSurface_XmlElement left="28459" top="-23622" width="5292" height="3176" selected="0" zOrder="17" index="1" expanded="0" />
+                    <RoadNetwork_XmlElement left="28459" top="-597" width="5292" height="3176" selected="0" zOrder="19" index="2" expanded="1">
+                        <Intersections_XmlElement left="34385" top="-21780" width="5292" height="3176" selected="0" zOrder="21" index="0" expanded="1">
+                            <Intersection_XmlElement left="40311" top="-21780" width="5292" height="3176" selected="0" zOrder="23" index="0" expanded="1">
+                                <Material_XmlElement left="46237" top="-27306" width="5292" height="3176" selected="0" zOrder="25" index="0" expanded="0" />
+                                <BannedLinks_XmlElement left="46237" top="-23622" width="5292" height="3176" selected="0" zOrder="27" index="1" expanded="1">
+                                    <LanePair_XmlElement left="52162" top="-23622" width="5292" height="3176" selected="0" zOrder="29" index="0" expanded="1" />
+                                </BannedLinks_XmlElement>
+                                <ClippedDatas_XmlElement left="46237" top="-19938" width="5292" height="3176" selected="0" zOrder="31" index="2" expanded="0" />
+                                <Contours_XmlElement left="46237" top="-16254" width="5292" height="3176" selected="0" zOrder="33" index="3" expanded="1">
+                                    <ContourPiece_XmlElement left="52163" top="-16254" width="5292" height="3176" selected="0" zOrder="35" index="0" expanded="1">
+                                        <PolyLine_XmlElement left="58089" top="-16254" width="5292" height="3176" selected="0" zOrder="37" index="0" expanded="0" />
+                                    </ContourPiece_XmlElement>
+                                </Contours_XmlElement>
+                            </Intersection_XmlElement>
+                        </Intersections_XmlElement>
+                        <Tracks_XmlElement left="34385" top="-5202" width="5292" height="3176" selected="0" zOrder="39" index="1" expanded="1">
+                            <Track_XmlElement left="40311" top="-5202" width="5292" height="3176" selected="0" zOrder="41" index="0" expanded="1">
+                                <XYCurve_XmlElement left="46237" top="-12570" width="5292" height="3176" selected="0" zOrder="43" index="0" expanded="0" />
+                                <SZCurve_XmlElement left="46237" top="-8886" width="5292" height="3176" selected="0" zOrder="45" index="1" expanded="0" />
+                                <BankingCurve_XmlElement left="46237" top="-5202" width="5292" height="3176" selected="0" zOrder="47" index="2" expanded="0" />
+                                <Portions_XmlElement left="46237" top="-1518" width="5292" height="3176" selected="0" zOrder="49" index="3" expanded="1">
+                                    <Portion_XmlElement left="52163" top="-1518" width="5292" height="3176" selected="0" zOrder="51" index="0" expanded="1" />
+                                </Portions_XmlElement>
+                                <ClippedDatas_XmlElement left="46237" top="2166" width="5292" height="3176" selected="0" zOrder="53" index="4" expanded="1">
+                                    <TrackClippedData_XmlElement left="52163" top="2166" width="5292" height="3176" selected="0" zOrder="55" index="0" expanded="1">
+                                        <TrackClip_XmlElement left="58089" top="-10780" width="5292" height="3176" selected="0" zOrder="57" index="0" expanded="1" />
+                                        <TrackScope_XmlElement left="58089" top="-7096" width="5292" height="3176" selected="0" zOrder="59" index="1" expanded="1" />
+                                        <RoadSign_XmlElement left="58089" top="-3307" width="5292" height="3176" selected="0" zOrder="61" index="2" expanded="0" />
+                                        <ExternalElement_XmlElement left="58089" top="377" width="5292" height="3176" selected="0" zOrder="63" index="3" expanded="0" />
+                                        <Obstacle_XmlElement left="58089" top="4061" width="5292" height="3176" selected="0" zOrder="65" index="4" expanded="0" />
+                                        <Sequence_XmlElement left="58089" top="7745" width="5292" height="3176" selected="0" zOrder="67" index="5" expanded="0" />
+                                        <SequenceY_XmlElement left="58089" top="11429" width="5292" height="3176" selected="0" zOrder="69" index="6" expanded="0" />
+                                        <SequenceZ_XmlElement left="58089" top="15113" width="5292" height="3176" selected="0" zOrder="71" index="7" expanded="0" />
+                                    </TrackClippedData_XmlElement>
+                                </ClippedDatas_XmlElement>
+                            </Track_XmlElement>
+                        </Tracks_XmlElement>
+                        <Profiles_XmlElement left="34385" top="7692" width="5292" height="3176" selected="0" zOrder="73" index="2" expanded="1">
+                            <Profile_XmlElement left="40311" top="7692" width="5292" height="3176" selected="0" zOrder="75" index="0" expanded="1">
+                                <LaneBorder_XmlElement left="46237" top="5850" width="5292" height="3176" selected="0" zOrder="77" index="0" expanded="0" />
+                                <Lane_XmlElement left="46237" top="9534" width="5292" height="3176" selected="0" zOrder="79" index="1" expanded="0" />
+                            </Profile_XmlElement>
+                        </Profiles_XmlElement>
+                        <Grounds_XmlElement left="34385" top="11376" width="5292" height="3176" selected="0" zOrder="81" index="3" expanded="1">
+                            <Ground_XmlElement left="40311" top="11376" width="5292" height="3176" selected="0" zOrder="83" index="0" expanded="0" />
+                        </Grounds_XmlElement>
+                        <Markings_XmlElement left="34385" top="15060" width="5292" height="3176" selected="0" zOrder="85" index="4" expanded="1">
+                            <Marking_XmlElement left="40311" top="15060" width="5292" height="3176" selected="0" zOrder="87" index="0" expanded="1">
+                                <Material_XmlElement left="46237" top="13218" width="5292" height="3176" selected="0" zOrder="89" index="0" expanded="0" />
+                                <UVMapping_XmlElement left="46237" top="16902" width="5292" height="3176" selected="0" zOrder="91" index="1" expanded="0" />
+                            </Marking_XmlElement>
+                        </Markings_XmlElement>
+                        <TrafficLightGroups_XmlElement left="34385" top="20586" width="5292" height="3176" selected="0" zOrder="93" index="5" expanded="1">
+                            <TrafficLightGroup_XmlElement left="40311" top="20586" width="5292" height="3176" selected="0" zOrder="95" index="0" expanded="1">
+                                <Animations_XmlElement left="46237" top="20586" width="5292" height="3176" selected="0" zOrder="97" index="0" expanded="1">
+                                    <TrafficLightAnimation_XmlElement left="52163" top="20586" width="5292" height="3176" selected="0" zOrder="99" index="0" expanded="1">
+                                        <States_XmlElement left="58089" top="20586" width="5292" height="3176" selected="0" zOrder="101" index="0" expanded="1">
+                                            <TrafficLightState_XmlElement left="64015" top="20586" width="5292" height="3176" selected="0" zOrder="103" index="0" expanded="1">
+                                                <State_XmlElement left="69941" top="20586" width="5292" height="3176" selected="0" zOrder="105" index="0" expanded="1" />
+                                            </TrafficLightState_XmlElement>
+                                        </States_XmlElement>
+                                    </TrafficLightAnimation_XmlElement>
+                                </Animations_XmlElement>
+                            </TrafficLightGroup_XmlElement>
+                        </TrafficLightGroups_XmlElement>
+                    </RoadNetwork_XmlElement>
+                    <TrajectoryParts_XmlElement left="28459" top="26112" width="5292" height="3176" selected="0" zOrder="107" index="3" expanded="1">
+                        <TrajectoryPart_XmlElement left="34385" top="26112" width="5292" height="3176" selected="0" zOrder="109" index="0" expanded="1">
+                            <XYCurve_XmlElement left="40311" top="24270" width="5292" height="3176" selected="0" zOrder="111" index="0" expanded="0" />
+                            <SZCurve_XmlElement left="40311" top="27954" width="5292" height="3176" selected="0" zOrder="113" index="1" expanded="0" />
+                        </TrajectoryPart_XmlElement>
+                    </TrajectoryParts_XmlElement>
+                    <Trajectories_XmlElement left="28459" top="31638" width="5292" height="3176" selected="0" zOrder="115" index="4" expanded="1">
+                        <Trajectory_XmlElement left="34385" top="31638" width="5292" height="3176" selected="0" zOrder="117" index="0" expanded="1">
+                            <TrajectoryElement_XmlElement left="40311" top="31638" width="5292" height="3176" selected="0" zOrder="119" index="0" expanded="1" />
+                        </Trajectory_XmlElement>
+                    </Trajectories_XmlElement>
+                    <ProxyFile_XmlElement left="28459" top="35322" width="5292" height="3176" selected="0" zOrder="121" index="5" expanded="1" />
+                    <ClippedDatas_XmlElement left="28459" top="39006" width="5292" height="3176" selected="0" zOrder="123" index="6" expanded="0" />
+                    <GeneratedTerrainMaterial_XmlElement left="28459" top="42690" width="5292" height="3176" selected="0" zOrder="125" index="7" expanded="1">
+                        <Material_XmlElement left="34385" top="42691" width="5291" height="3175" selected="0" zOrder="127" index="0" expanded="1">
+                            <Diffuse_XmlElement left="40310" top="37165" width="5292" height="3176" selected="0" zOrder="129" index="0" expanded="0" />
+                            <Ambient_XmlElement left="40310" top="40849" width="5292" height="3176" selected="0" zOrder="131" index="1" expanded="0" />
+                            <Specular_XmlElement left="40310" top="44533" width="5292" height="3176" selected="0" zOrder="133" index="2" expanded="0" />
+                            <Emissive_XmlElement left="40310" top="48217" width="5292" height="3176" selected="0" zOrder="135" index="3" expanded="0" />
+                        </Material_XmlElement>
+                    </GeneratedTerrainMaterial_XmlElement>
+                    <ExternalPhysicSurface_XmlElement left="28459" top="46374" width="5292" height="3176" selected="0" zOrder="137" index="8" expanded="1" />
+                    <TerrainContours_XmlElement left="28459" top="51901" width="5292" height="3176" selected="0" zOrder="139" index="9" expanded="1">
+                        <TerrainContour_XmlElement left="34385" top="51901" width="5292" height="3176" selected="0" zOrder="141" index="0" expanded="1" />
+                    </TerrainContours_XmlElement>
+                </SubNetwork_XmlElement>
+            </SubNetworks_XmlElement>
+            <SubNetworkJunctions_XmlElement left="16607" top="15981" width="5291" height="3176" selected="0" zOrder="9" index="1" expanded="1">
+                <SubNetworkJunction_XmlElement left="22532" top="15981" width="5292" height="3176" selected="0" zOrder="12" index="0" expanded="1" />
+            </SubNetworkJunctions_XmlElement>
+            <Roads_XmlElement left="16607" top="55585" width="5292" height="3176" selected="0" zOrder="143" index="2" expanded="1">
+                <Road_XmlElement left="22533" top="55585" width="5292" height="3176" selected="0" zOrder="145" index="0" expanded="1">
+                    <RoadPieces_XmlElement left="28459" top="55585" width="5292" height="3176" selected="0" zOrder="147" index="0" expanded="1">
+                        <RoadElement_XmlElement left="34385" top="55585" width="5292" height="3176" selected="0" zOrder="149" index="0" expanded="1" />
+                    </RoadPieces_XmlElement>
+                </Road_XmlElement>
+            </Roads_XmlElement>
+            <Geolocalisation_XmlElement left="16607" top="59519" width="7614" height="2676" selected="0" zOrder="151" index="3" expanded="1">
+                <Translation_XmlElement left="24855" top="59269" width="5292" height="3176" selected="0" zOrder="153" index="0" expanded="1" />
+            </Geolocalisation_XmlElement>
+            <ExternalTerrain_XmlElement left="16607" top="62703" width="5292" height="3176" selected="0" zOrder="155" index="4" expanded="1" />
+            <ExternalSurface_XmlElement left="16607" top="66387" width="5292" height="3176" selected="0" zOrder="157" index="5" expanded="1" />
+            <ExternalPhysicSurface_XmlElement left="16607" top="70071" width="5292" height="3176" selected="0" zOrder="159" index="6" expanded="1" />
+            <GeneratedTerrainMaterial_XmlElement left="16607" top="73755" width="5292" height="3176" selected="0" zOrder="161" index="7" expanded="1" />
+        </Network_XmlElement>
+    </RoadXML_XmlElement>
+    <ColorCT_XmlComplexType left="1317" top="68826" width="5291" height="2676" selected="0" zOrder="163" index="1" expanded="1" />
+    <TextureCT_XmlComplexType left="1317" top="72010" width="5292" height="1676" selected="0" zOrder="164" index="2" expanded="1" />
+    <ChanelCT_XmlComplexType left="1317" top="76036" width="5292" height="3176" selected="0" zOrder="165" index="3" expanded="1">
+        <Texture_XmlElement left="7243" top="74194" width="5292" height="3176" selected="0" zOrder="166" index="0" expanded="0" />
+        <Color_XmlElement left="7243" top="77878" width="5292" height="3176" selected="0" zOrder="168" index="1" expanded="0" />
+    </ChanelCT_XmlComplexType>
+    <MaterialCT_XmlComplexType left="1317" top="83418" width="5291" height="3176" selected="0" zOrder="170" index="4" expanded="1">
+        <Diffuse_XmlElement left="7242" top="81642" width="5291" height="1676" selected="0" zOrder="171" index="0" expanded="0" />
+        <Ambient_XmlElement left="7242" top="83826" width="5291" height="1176" selected="0" zOrder="173" index="1" expanded="0" />
+        <Specular_XmlElement left="7242" top="85510" width="5291" height="1176" selected="0" zOrder="175" index="2" expanded="0" />
+        <Emissive_XmlElement left="7242" top="87194" width="5291" height="1176" selected="0" zOrder="177" index="3" expanded="0" />
+    </MaterialCT_XmlComplexType>
+    <UVMappingCT_XmlComplexType left="1317" top="88958" width="5292" height="2176" selected="0" zOrder="179" index="5" expanded="1" />
+    <Vectord2CT_XmlComplexType left="1317" top="91781" width="5292" height="2176" selected="0" zOrder="180" index="6" expanded="1" />
+    <PolyLineCT_XmlComplexType left="1317" top="94465" width="5291" height="2176" selected="0" zOrder="181" index="7" expanded="1">
+        <Vectord2_XmlElement left="7242" top="94715" width="5292" height="1676" selected="0" zOrder="182" index="0" expanded="0" />
+    </PolyLineCT_XmlComplexType>
+    <CircleArcCT_XmlComplexType left="1317" top="97149" width="5291" height="2176" selected="0" zOrder="184" index="8" expanded="1" />
+    <SegmentCT_XmlComplexType left="1317" top="99833" width="5292" height="1676" selected="0" zOrder="185" index="9" expanded="1" />
+    <ClothoArcCT_XmlComplexType left="1317" top="102017" width="5292" height="2176" selected="0" zOrder="186" index="10" expanded="1" />
+    <ClothoidSplineCT_XmlComplexType left="1317" top="202113" width="5292" height="3176" selected="0" zOrder="187" index="11" expanded="1">
+        <Vectord2_XmlElement left="7243" top="202113" width="5292" height="3176" selected="0" zOrder="188" index="0" expanded="0" />
+    </ClothoidSplineCT_XmlComplexType>
+    <Curve2DCT_XmlComplexType left="1317" top="110227" width="5292" height="3176" selected="0" zOrder="190" index="12" expanded="1">
+        <Segment_XmlElement left="7243" top="102859" width="5292" height="3176" selected="0" zOrder="191" index="0" expanded="0" />
+        <CircleArc_XmlElement left="7243" top="106543" width="5292" height="3176" selected="0" zOrder="193" index="1" expanded="0" />
+        <PolyLine_XmlElement left="7243" top="110227" width="5292" height="3176" selected="0" zOrder="195" index="2" expanded="0" />
+        <ClothoArc_XmlElement left="7243" top="113911" width="5292" height="3176" selected="0" zOrder="197" index="3" expanded="0" />
+        <ClothoidSpline_XmlElement left="7243" top="117595" width="5292" height="3176" selected="0" zOrder="199" index="4" expanded="0" />
+    </Curve2DCT_XmlComplexType>
+    <PolynomialCT_XmlComplexType left="1317" top="120779" width="5291" height="2176" selected="0" zOrder="201" index="13" expanded="1">
+        <begin_XmlElement left="7242" top="119437" width="5291" height="2176" selected="0" zOrder="202" index="0" expanded="1" />
+        <end_XmlElement left="7242" top="122121" width="5291" height="2176" selected="0" zOrder="204" index="1" expanded="1" />
+    </PolynomialCT_XmlComplexType>
+    <VehicleTypeCT_XmlComplexType left="1317" top="124805" width="5292" height="3674" selected="0" zOrder="206" index="14" expanded="1" />
+    <ExternalElementCT_XmlComplexType left="1317" top="128987" width="5292" height="1676" selected="0" zOrder="207" index="15" expanded="1" />
+    <StringArrayCT_XmlComplexType left="1317" top="131171" width="5292" height="1676" selected="0" zOrder="208" index="16" expanded="1" />
+    <SequenceCT_XmlComplexType left="1317" top="133355" width="5292" height="3176" selected="0" zOrder="209" index="17" expanded="1" />
+    <GroundCT_XmlComplexType left="1317" top="137039" width="5292" height="2676" selected="0" zOrder="210" index="18" expanded="1" />
+    <RoadSignCT_XmlComplexType left="1317" top="142065" width="5292" height="3176" selected="0" zOrder="211" index="19" expanded="1">
+        <VehicleType_XmlElement left="7243" top="140223" width="5292" height="3176" selected="0" zOrder="212" index="0" expanded="0" />
+        <Light_XmlElement left="7243" top="143907" width="5292" height="3176" selected="0" zOrder="214" index="1" expanded="1" />
+    </RoadSignCT_XmlComplexType>
+    <ObstacleCT_XmlComplexType left="1317" top="147591" width="5292" height="3176" selected="0" zOrder="216" index="20" expanded="1" />
+    <CurveCT_XmlComplexType left="1317" top="151275" width="5292" height="3176" selected="0" zOrder="217" index="21" expanded="1">
+        <Polynomial_XmlElement left="7243" top="151275" width="5292" height="3176" selected="0" zOrder="218" index="0" expanded="0" />
+    </CurveCT_XmlComplexType>
+    <LaneCT_XmlComplexType left="1317" top="158643" width="5292" height="3176" selected="0" zOrder="220" index="22" expanded="1">
+        <VehicleType_XmlElement left="7243" top="154959" width="5292" height="3176" selected="0" zOrder="221" index="0" expanded="0" />
+        <Material_XmlElement left="7243" top="158643" width="5292" height="3176" selected="0" zOrder="223" index="1" expanded="0" />
+        <UVMapping_XmlElement left="7243" top="162327" width="5292" height="3176" selected="0" zOrder="225" index="2" expanded="0" />
+    </LaneCT_XmlComplexType>
+    <LaneBorderCT_XmlComplexType left="1317" top="168445" width="5292" height="2676" selected="0" zOrder="239" index="23" expanded="1">
+        <Decoration_XmlElement left="7243" top="168695" width="5291" height="2176" selected="0" zOrder="240" index="0" expanded="1">
+            <Material_XmlElement left="13168" top="166011" width="5292" height="2676" selected="0" zOrder="242" index="0" expanded="0" />
+            <UVMapping_XmlElement left="13168" top="169195" width="5292" height="2176" selected="0" zOrder="244" index="1" expanded="0" />
+            <PolyLine_XmlElement left="13168" top="171879" width="5292" height="1676" selected="0" zOrder="246" index="2" expanded="0" />
+        </Decoration_XmlElement>
+    </LaneBorderCT_XmlComplexType>
+    <FrameCT_XmlComplexType left="1317" top="198324" width="5292" height="3176" selected="0" zOrder="248" index="24" expanded="1" />
+    <MarkClippedDataCT_XmlComplexType left="1317" top="183535" width="5292" height="3176" selected="0" zOrder="249" index="25" expanded="1">
+        <MarkClippedData_XmlElement left="7243" top="183535" width="5292" height="3176" selected="0" zOrder="250" index="0" expanded="1">
+            <RoadSign_XmlElement left="13169" top="172483" width="5292" height="3176" selected="0" zOrder="252" index="0" expanded="0" />
+            <ExternalElement_XmlElement left="13169" top="176167" width="5292" height="3176" selected="0" zOrder="254" index="1" expanded="0" />
+            <Obstacle_XmlElement left="13169" top="179851" width="5292" height="3176" selected="0" zOrder="256" index="2" expanded="0" />
+            <Sequence_XmlElement left="13169" top="183535" width="5292" height="3176" selected="0" zOrder="258" index="3" expanded="0" />
+            <SequenceY_XmlElement left="13169" top="187219" width="5292" height="3176" selected="0" zOrder="260" index="4" expanded="0" />
+            <SequenceZ_XmlElement left="13169" top="190903" width="5292" height="3176" selected="0" zOrder="262" index="5" expanded="0" />
+            <Frame_XmlElement left="13169" top="194587" width="5292" height="3176" selected="0" zOrder="264" index="6" expanded="0" />
+        </MarkClippedData_XmlElement>
+    </MarkClippedDataCT_XmlComplexType>
+    <SubNetworkJunctions_XmlElement left="1317" top="205797" width="5292" height="3176" selected="0" zOrder="266" index="26" expanded="1">
+        <SubNetworkJunction_XmlElement left="7243" top="205797" width="5292" height="3176" selected="0" zOrder="267" index="0" expanded="1" />
+    </SubNetworkJunctions_XmlElement>
+</XSDDesignerLayout>

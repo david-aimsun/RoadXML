@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<RoadXML version="2.3.0" versionRevision="2.3.0-$Revision: 23033 $-$Date: 2011-05-02 11:01:27 +0200 (lun., 02 mai 2011) $" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <Network name="" traffic="right-hand">
+    <SubNetworkJunctions/>
+    <SubNetworks>
+      <SubNetwork heading="0" name="Sub Network" x="0" y="0" z="0">
+        <ExternalTerrain path="objects/eight_with_intersection.ive"/>
+        <RoadNetwork>
+          <Grounds>
+            <Ground granulosity="0.5" grip="0.5" name="Ground" type="asphalt"/>
+            <Ground granulosity="0.5" grip="1" name="Asphalt" type="asphalt"/>
+          </Grounds>
+          <Markings>
+            <Marking leftToRight="can" lineLength="2" name="Marking" rightToLeft="can" totalLength="6" width="0.2">
+              <Material>
+                <Diffuse>
+                  <Texture path="textures/marking.png"/>
+                  <Color alpha="1" blue="1" green="1" red="1"/>
+                </Diffuse>
+                <Ambient>
+                  <Color alpha="1" blue="1" green="1" red="1"/>
+                </Ambient>
+                <Specular>
+                  <Color alpha="1" blue="0" green="0" red="0"/>
+                </Specular>
+                <Emissive>
+                  <Color alpha="1" blue="0" green="0" red="0"/>
+                </Emissive>
+              </Material>
+              <UVMapping leftU="0" lengthV="1" rightU="1"/>
+            </Marking>
+            <Marking leftToRight="cannot" lineLength="6" name="Marking 2" rightToLeft="cannot" totalLength="6" width="0.2">
+              <Material>
+                <Diffuse>
+                  <Texture path="textures/marking.png"/>
+                  <Color alpha="1" blue="1" green="1" red="1"/>
+                </Diffuse>
+                <Ambient>
+                  <Color alpha="1" blue="1" green="1" red="1"/>
+                </Ambient>
+                <Specular>
+                  <Color alpha="1" blue="0" green="0" red="0"/>
+                </Specular>
+                <Emissive>
+                  <Color alpha="1" blue="0" green="0" red="0"/>
+                </Emissive>
+              </Material>
+              <UVMapping leftU="0" lengthV="1" rightU="1"/>
+            </Marking>
+          </Markings>
+          <Profiles>
+            <Profile name="Default Fr" type="none">
+              <LaneBorder distance="-5.8" height="0.2" markingOffset="0"/>
+              <Lane Ground="Ground" circulationWay="both" name="Lane" speedLimit="8.33333" type="sidewalk">
+                <VehicleType categories="pedestrian,bicycle"/>
+                <Material>
+                  <Diffuse>
+                    <Texture path="textures/sidewalk.png"/>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Diffuse>
+                  <Ambient>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Ambient>
+                  <Specular>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Specular>
+                  <Emissive>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Emissive>
+                </Material>
+                <UVMapping leftU="0" lengthV="1" rightU="1"/>
+              </Lane>
+              <LaneBorder distance="-3.51" height="0.2" markingOffset="0"/>
+              <Lane Ground="Ground" circulationWay="none" name="Lane 2" speedLimit="0" type="shoulder">
+                <VehicleType categories="none"/>
+                <Material>
+                  <Diffuse>
+                    <Texture path="textures/sidewalkside.png"/>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Diffuse>
+                  <Ambient>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Ambient>
+                  <Specular>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Specular>
+                  <Emissive>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Emissive>
+                </Material>
+                <UVMapping leftU="0" lengthV="5" rightU="1"/>
+              </Lane>
+              <LaneBorder distance="-3.5" height="0" markingName="Marking" markingOffset="0.15"/>
+              <Lane Ground="Ground" circulationWay="inverse" name="Lane 3" speedLimit="25" type="paved">
+                <VehicleType categories="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck"/>
+                <Material>
+                  <Diffuse>
+                    <Texture path="textures/macadam.png"/>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Diffuse>
+                  <Ambient>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Ambient>
+                  <Specular>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Specular>
+                  <Emissive>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Emissive>
+                </Material>
+                <UVMapping leftU="0" lengthV="20" rightU="1"/>
+              </Lane>
+              <LaneBorder distance="0" height="0" markingName="Marking 2" markingOffset="0"/>
+              <Lane Ground="Ground" circulationWay="direct" name="Lane 4" speedLimit="25" type="paved">
+                <VehicleType categories="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck"/>
+                <Material>
+                  <Diffuse>
+                    <Texture path="textures/macadam.png"/>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Diffuse>
+                  <Ambient>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Ambient>
+                  <Specular>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Specular>
+                  <Emissive>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Emissive>
+                </Material>
+                <UVMapping leftU="0" lengthV="20" rightU="1"/>
+              </Lane>
+              <LaneBorder distance="3.5" height="0" markingName="Marking" markingOffset="-0.15"/>
+              <Lane Ground="Ground" circulationWay="none" name="Lane 5" speedLimit="0" type="shoulder">
+                <VehicleType categories="none"/>
+                <Material>
+                  <Diffuse>
+                    <Texture path="textures/sidewalkside.png"/>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Diffuse>
+                  <Ambient>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Ambient>
+                  <Specular>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Specular>
+                  <Emissive>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Emissive>
+                </Material>
+                <UVMapping leftU="1" lengthV="5" rightU="0"/>
+              </Lane>
+              <LaneBorder distance="3.51" height="0.2" markingOffset="0"/>
+              <Lane Ground="Ground" circulationWay="both" name="Lane 6" speedLimit="8.33333" type="sidewalk">
+                <VehicleType categories="pedestrian,bicycle"/>
+                <Material>
+                  <Diffuse>
+                    <Texture path="textures/sidewalk.png"/>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Diffuse>
+                  <Ambient>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Ambient>
+                  <Specular>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Specular>
+                  <Emissive>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Emissive>
+                </Material>
+                <UVMapping leftU="0" lengthV="1" rightU="1"/>
+              </Lane>
+              <LaneBorder distance="5.8" height="0.2" markingOffset="0"/>
+            </Profile>
+            <Profile name="Profile" type="none">
+              <LaneBorder distance="-5.8" height="0.2" markingOffset="0"/>
+              <Lane Ground="Ground" circulationWay="both" name="Lane" speedLimit="8.33333" type="sidewalk">
+                <VehicleType categories="pedestrian"/>
+                <Material>
+                  <Diffuse>
+                    <Texture path="textures/sidewalk.png"/>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Diffuse>
+                  <Ambient>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Ambient>
+                  <Specular>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Specular>
+                  <Emissive>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Emissive>
+                </Material>
+                <UVMapping leftU="0" lengthV="1" rightU="1"/>
+              </Lane>
+              <LaneBorder distance="-3.51" height="0.2" markingOffset="0"/>
+              <Lane Ground="Ground" circulationWay="none" name="Lane 2" speedLimit="0" type="shoulder">
+                <VehicleType categories="none"/>
+                <Material>
+                  <Diffuse>
+                    <Texture path="textures/sidewalkside.png"/>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Diffuse>
+                  <Ambient>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Ambient>
+                  <Specular>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Specular>
+                  <Emissive>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Emissive>
+                </Material>
+                <UVMapping leftU="0" lengthV="5" rightU="1"/>
+              </Lane>
+              <LaneBorder distance="-3.5" height="0" markingName="Marking" markingOffset="0.15"/>
+              <Lane Ground="Ground" circulationWay="inverse" name="Lane 3" speedLimit="25" type="paved">
+                <VehicleType categories="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck"/>
+                <Material>
+                  <Diffuse>
+                    <Texture path="textures/macadam.png"/>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Diffuse>
+                  <Ambient>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Ambient>
+                  <Specular>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Specular>
+                  <Emissive>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Emissive>
+                </Material>
+                <UVMapping leftU="0" lengthV="20" rightU="1"/>
+              </Lane>
+              <LaneBorder distance="0" height="0" markingName="Marking 2" markingOffset="0"/>
+              <Lane Ground="Ground" circulationWay="direct" name="Lane 4" speedLimit="25" type="paved">
+                <VehicleType categories="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck"/>
+                <Material>
+                  <Diffuse>
+                    <Texture path="textures/macadam.png"/>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Diffuse>
+                  <Ambient>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Ambient>
+                  <Specular>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Specular>
+                  <Emissive>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Emissive>
+                </Material>
+                <UVMapping leftU="0" lengthV="20" rightU="1"/>
+              </Lane>
+              <LaneBorder distance="3.5" height="0" markingName="Marking" markingOffset="-0.15"/>
+              <Lane Ground="Ground" circulationWay="none" name="Lane 5" speedLimit="0" type="shoulder">
+                <VehicleType categories="none"/>
+                <Material>
+                  <Diffuse>
+                    <Texture path="textures/sidewalkside.png"/>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Diffuse>
+                  <Ambient>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Ambient>
+                  <Specular>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Specular>
+                  <Emissive>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Emissive>
+                </Material>
+                <UVMapping leftU="1" lengthV="5" rightU="0"/>
+              </Lane>
+              <LaneBorder distance="3.51" height="0.2" markingOffset="0"/>
+              <Lane Ground="Ground" circulationWay="both" name="Lane 6" speedLimit="8.33333" type="sidewalk">
+                <VehicleType categories="pedestrian"/>
+                <Material>
+                  <Diffuse>
+                    <Texture path="textures/sidewalk.png"/>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Diffuse>
+                  <Ambient>
+                    <Color alpha="1" blue="1" green="1" red="1"/>
+                  </Ambient>
+                  <Specular>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Specular>
+                  <Emissive>
+                    <Color alpha="1" blue="0" green="0" red="0"/>
+                  </Emissive>
+                </Material>
+                <UVMapping leftU="0" lengthV="1" rightU="1"/>
+              </Lane>
+              <LaneBorder distance="5.8" height="0.2" markingOffset="0"/>
+            </Profile>
+          </Profiles>
+          <Intersections>
+            <Intersection groundName="Asphalt" name="Intersection" x="-0.00018366" y="-3.55271e-015" z="0">
+              <BannedLinks>
+                <LanePair fromLane="Lane 3" fromTrack="Track 2 2" fromTrackBoundInfo="start" toLane="Lane 4" toTrack="Track 2 2" toTrackBoundInfo="start"/>
+                <LanePair fromLane="Lane 4" fromTrack="Track 2" fromTrackBoundInfo="end" toLane="Lane 3" toTrack="Track 2" toTrackBoundInfo="end"/>
+                <LanePair fromLane="Lane 3" fromTrack="Track 2" fromTrackBoundInfo="start" toLane="Lane 4" toTrack="Track 2" toTrackBoundInfo="start"/>
+                <LanePair fromLane="Lane 4" fromTrack="Track 2 2" fromTrackBoundInfo="end" toLane="Lane 3" toTrack="Track 2 2" toTrackBoundInfo="end"/>
+              </BannedLinks>
+              <ClippedDatas/>
+              <Contours/>
+            </Intersection>
+          </Intersections>
+          <Tracks>
+            <Track endNode="Intersection" name="Track 2" startNode="Intersection">
+              <XYCurve direction="-1.57079" x="-0.000146928" y="-10">
+                <Segment length="40"/>
+                <CircleArc curvature="-0.02" length="235.61"/>
+                <Segment length="39.9998"/>
+              </XYCurve>
+              <SZCurve>
+                <Polynomial>
+                  <begin direction="0" x="0" y="0"/>
+                  <end direction="0" x="275.61" y="0"/>
+                </Polynomial>
+                <Polynomial>
+                  <begin direction="0" x="275.61" y="0"/>
+                  <end direction="0" x="315.6098" y="0"/>
+                </Polynomial>
+              </SZCurve>
+              <BankingCurve>
+                <Polynomial>
+                  <begin direction="0" x="0" y="0"/>
+                  <end direction="0" x="315.6098" y="0"/>
+                </Polynomial>
+              </BankingCurve>
+              <Portions>
+                <Portion endDistance="315.6098" endProfile="Profile" name="" startProfile="Profile"/>
+              </Portions>
+              <ClippedDatas>
+                <TrackClippedData mass="-1" name="Trafic Light" sequenceOrientation="0">
+                  <ExternalElement path="objects/traffic_light.ive"/>
+                  <RoadSign direction="none" message="" signType="traffic light" temporary="0" value="0">
+                    <VehicleType categories="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck"/>
+                    <Light VehicleType="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck" color="red" direction="straight,left,right" illumination="off" name="LAMP03"/>
+                    <Light VehicleType="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck" color="orange" direction="straight,left,right" illumination="off" name="LAMP02"/>
+                    <Light VehicleType="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck" color="green" direction="straight,left,right" illumination="off" name="LAMP01"/>
+                  </RoadSign>
+                  <TrackClip abscissa="0" distance="-4" elevation="0" heading="1.5708" vertical="1"/>
+                  <TrackScope bottom="0" from="0" left="0" right="0" to="0" top="0" way="inverse"/>
+                </TrackClippedData>
+                <TrackClippedData mass="-1" name="Trafic Light 4" sequenceOrientation="0">
+                  <ExternalElement path="objects/traffic_light.ive"/>
+                  <RoadSign direction="none" message="" signType="traffic light" temporary="0" value="0">
+                    <VehicleType categories="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck"/>
+                    <Light VehicleType="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck" color="red" direction="straight,left,right" illumination="off" name="LAMP03"/>
+                    <Light VehicleType="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck" color="orange" direction="straight,left,right" illumination="off" name="LAMP02"/>
+                    <Light VehicleType="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck" color="green" direction="straight,left,right" illumination="off" name="LAMP01"/>
+                  </RoadSign>
+                  <TrackClip abscissa="315" distance="4" elevation="0" heading="-1.5708" vertical="1"/>
+                  <TrackScope bottom="0" from="0" left="0" right="0" to="0" top="0" way="direct"/>
+                </TrackClippedData>
+              </ClippedDatas>
+            </Track>
+            <Track endNode="Intersection" name="Track 2 2" startNode="Intersection">
+              <XYCurve direction="1.57061" x="-0.00735832" y="10.0094">
+                <Segment length="40"/>
+                <CircleArc curvature="-0.02" length="235.61"/>
+                <Segment length="40.0002"/>
+              </XYCurve>
+              <SZCurve>
+                <Polynomial>
+                  <begin direction="0" x="0" y="6.12323e-015"/>
+                  <end direction="0" x="275.61" y="6.12323e-015"/>
+                </Polynomial>
+                <Polynomial>
+                  <begin direction="0" x="275.61" y="6.12323e-015"/>
+                  <end direction="0" x="315.6102" y="6.12323e-015"/>
+                </Polynomial>
+              </SZCurve>
+              <BankingCurve>
+                <Polynomial>
+                  <begin direction="0" x="0" y="0"/>
+                  <end direction="0" x="315.6102" y="0"/>
+                </Polynomial>
+              </BankingCurve>
+              <Portions>
+                <Portion endDistance="315.6102" endProfile="Profile" name="" startProfile="Profile"/>
+              </Portions>
+              <ClippedDatas>
+                <TrackClippedData mass="-1" name="Trafic Light 3" sequenceOrientation="0">
+                  <ExternalElement path="objects/traffic_light.ive"/>
+                  <RoadSign direction="none" message="" signType="traffic light" temporary="0" value="0">
+                    <VehicleType categories="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck"/>
+                    <Light VehicleType="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck" color="red" direction="straight,left,right" illumination="off" name="LAMP03"/>
+                    <Light VehicleType="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck" color="orange" direction="straight,left,right" illumination="off" name="LAMP02"/>
+                    <Light VehicleType="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck" color="green" direction="straight,left,right" illumination="off" name="LAMP01"/>
+                  </RoadSign>
+                  <TrackClip abscissa="315.61" distance="4" elevation="0" heading="-1.5708" vertical="1"/>
+                  <TrackScope bottom="0" from="0" left="0" right="0" to="0" top="0" way="direct"/>
+                </TrackClippedData>
+                <TrackClippedData mass="-1" name="Trafic Light 5" sequenceOrientation="0">
+                  <ExternalElement path="objects/traffic_light.ive"/>
+                  <RoadSign direction="none" message="" signType="traffic light" temporary="0" value="0">
+                    <VehicleType categories="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck"/>
+                    <Light VehicleType="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck" color="red" direction="straight,left,right" illumination="off" name="LAMP03"/>
+                    <Light VehicleType="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck" color="orange" direction="straight,left,right" illumination="off" name="LAMP02"/>
+                    <Light VehicleType="bicycle,moped,motorcycle,car,trail,caravan,bus,agricultural vehicle,goods transport,poluting transport,dangerous transport,nailed tires,truck" color="green" direction="straight,left,right" illumination="off" name="LAMP01"/>
+                  </RoadSign>
+                  <TrackClip abscissa="0" distance="-4" elevation="0" heading="0" vertical="1"/>
+                  <TrackScope bottom="0" from="0" left="0" right="0" to="0" top="0" way="inverse"/>
+                </TrackClippedData>
+              </ClippedDatas>
+            </Track>
+          </Tracks>
+          <TrafficLightGroups>
+            <TrafficLightGroup name="Traffic Light Group">
+              <Animations>
+                <TrafficLightAnimation cycleName="Default" roadSign="Trafic Light">
+                  <States>
+                    <TrafficLightState timeLength="10">
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                      <State illumination="on"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="5">
+                      <State illumination="off"/>
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="25">
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="10">
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                      <State illumination="on"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="5">
+                      <State illumination="off"/>
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="10">
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                  </States>
+                </TrafficLightAnimation>
+                <TrafficLightAnimation cycleName="Default" roadSign="Trafic Light 3">
+                  <States>
+                    <TrafficLightState timeLength="20">
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="10">
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                      <State illumination="on"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="5">
+                      <State illumination="off"/>
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="15">
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                  </States>
+                </TrafficLightAnimation>
+                <TrafficLightAnimation cycleName="Default" roadSign="Trafic Light 4">
+                  <States>
+                    <TrafficLightState timeLength="20">
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="10">
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                      <State illumination="on"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="5">
+                      <State illumination="off"/>
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="15">
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                  </States>
+                </TrafficLightAnimation>
+                <TrafficLightAnimation cycleName="Default" roadSign="Trafic Light 5">
+                  <States>
+                    <TrafficLightState timeLength="10">
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                      <State illumination="on"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="5">
+                      <State illumination="off"/>
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="25">
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="10">
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                      <State illumination="on"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="5">
+                      <State illumination="off"/>
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                    <TrafficLightState timeLength="10">
+                      <State illumination="on"/>
+                      <State illumination="off"/>
+                      <State illumination="off"/>
+                    </TrafficLightState>
+                  </States>
+                </TrafficLightAnimation>
+              </Animations>
+            </TrafficLightGroup>
+          </TrafficLightGroups>
+        </RoadNetwork>
+      </SubNetwork>
+    </SubNetworks>
+    <Roads/>
+  </Network>
+
+</RoadXML>
