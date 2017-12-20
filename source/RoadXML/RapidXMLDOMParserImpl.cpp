@@ -194,7 +194,7 @@ bool RapidXMLDOMParserImpl::Save()
 #ifdef WIN32
 	std::ofstream out(Transcode(mFileName).c_str());
 #else
-	std::ofstream out(mFileName);
+	std::ofstream out(mFileName.c_str());
 #endif
 	out << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>" << std::endl;
 	out << *mDoc;
