@@ -47,6 +47,7 @@ public:
 	bool isInversible() const;
 
 	// Computes a submatrix in order to get determinant recursively
+	void minorMatrix(stk::Matrix &matrix, int line, int col) const;
 	void lmatrix(stk::Matrix &lmat, int n, int l) const;
 	double determinant() const;
 

@@ -5,15 +5,11 @@
 #include "CountedPtr.h"
 #include "RoadXMLTags.h"
 #include "stk/Macro.h"
+#include "RoughnessType.h"
 
 namespace RoadXML
 {
 	class SubNetworkElement;
-	enum RoughnessType{
-		RoughnessNone,
-		RoughnessAnalytic,
-		Roughness2x2D
-	};
 
 	static const char*	ToText(RoadXML::RoughnessType type);
 	static RoadXML::RoughnessType	ToGranulosityType(const char* name);
@@ -64,9 +60,15 @@ namespace RoadXML
 	public:
 		AnalyticElement();
 
-		double GetAverageGranulosity() const		{ return mAverageGranulosity; }
+		double GetRoughnessHeight() const		{ return mRoughnessHeight; }
+		double GetRoughnessLength() const		{ return mRoughnessLength; }
+		double GetRoughnessHeightStdDeviation() const		{ return mRoughnessHeightStdDeviation; }
+		double GetRoughnessLengthStdDeviation() const		{ return mRoughnessLengthStdDeviation; }
 
-		void SetAverageGranulosity(double d)	{ mAverageGranulosity = d; }
+		void SetRoughnessHeight(double d)	{ mRoughnessHeight = d; }
+		void SetRoughnessLength(double d)	{ mRoughnessLength = d; }
+		void SetRoughnessHeightStdDeviation(double d)	{ mRoughnessHeightStdDeviation = d; }
+		void SetRoughnessLengthStdDeviation(double d)	{ mRoughnessLengthStdDeviation = d; }
 
 
 		virtual const std::string&	GetTagName() const{ return kRoughnessAnalyticTag; }
@@ -74,9 +76,13 @@ namespace RoadXML
 		virtual IDOMElement*		BuildXMLElement(IDOMParser*);
 
 	protected:
-		double mAverageGranulosity;
+		double mRoughnessHeight;
+		double mRoughnessLength;
+		double mRoughnessHeightStdDeviation;
+		double mRoughnessLengthStdDeviation;
 
 	};
+
 
 	//! Roughness properties
 	/*! Description of the ground profile with the granulosity type.
@@ -86,7 +92,7 @@ namespace RoadXML
 	public:
 		RoughnessElement();
 
-		const RoughnessType									GetRoughnessType() const		{ return mRoughnessType; }
+		const RoughnessType										GetRoughnessType() const		{ return mRoughnessType; }
 		const CountedPtr<AnalyticElement>&						GetAnalytic() const				{ return mAnalytic; }
 		const std::vector<CountedPtr<Point2x2DElement> >&		Get2x2DPointArray()	const		{ return m2x2DPointArray; }
 		bool													GetIsPatternRepeated() const	{ return mIsPatternRepeated; }
@@ -133,11 +139,14 @@ namespace RoadXML
 		const std::string&					GetType() const				{ return mType; }
 		double								GetAverageGrip() const		{ return mAverageGrip; }
 		const CountedPtr<RoughnessElement>&	GetRoughness() const			{ return mRoughness; };
+		double								GetWaterLevel() const			{ return mWaterLevel; };
+
 
 		virtual void						SetName( const std::string& name, SubNetworkElement* parent );
 		void								SetType(const std::string& str)					{ mType = str; }
 		void								SetAverageGrip(double d)					{ mAverageGrip = d; }
 		void								SetRoughness(RoughnessElement* const roughnessPt)	{ mRoughness = roughnessPt; }
+		void								SetWaterLevel(double level)	{ mWaterLevel = level; }
 
 
 		virtual const std::string&					GetTagName() const	{ return kGroundTag; }
@@ -151,6 +160,7 @@ namespace RoadXML
 		double	mAverageGrip;
 
 		CountedPtr<RoughnessElement> mRoughness;
+		double mWaterLevel;
 
 		virtual bool LoadChild(IDOMElement* childElement, IDOMParser* parser);
 

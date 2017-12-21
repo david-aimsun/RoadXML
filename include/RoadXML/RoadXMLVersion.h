@@ -17,7 +17,7 @@
 
 #define RoadXML_VERSION_MAJOR 2
 #define RoadXML_VERSION_MINOR 4
-#define RoadXML_VERSION_DEV 2
+#define RoadXML_VERSION_DEV 3
 
 #define STR(S) #S
 #define XSTR(S) STR(S)

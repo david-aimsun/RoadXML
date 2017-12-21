@@ -4,6 +4,7 @@
 #include "stk/Transform.h"
 #include <float.h>
 #include <stdio.h>
+#define _USE_MATH_DEFINES
 #include <math.h>
 
 using namespace stk;
@@ -619,7 +620,11 @@ double stk::Signale(stk::t_Signale type, double x)
 	case TTrapeze:
 		return x;
 	case TEnS:
-		return (-2 * x*x*x + 3 * x*x);
+		//return (-2 * x*x*x + 3 * x*x);
+	//this new formula has the following properties:
+	//f(0)=0 f(1)=1 f'(0)=0 f'(1)=1 f"(0)=0 f"(1)=1
+	//it can be used in cases where it is important to minimize the "jerk"
+		return -(sin(2*M_PI*x)/(2*M_PI)) + x;
 	case TExponentiel:
 		return (exp(x) - 1) / (exp(1.0) - 1);
 	}
@@ -629,5 +634,7 @@ double stk::Signale(stk::t_Signale type, double x)
 
 double stk::Signale(stk::t_Signale type, double y1, double y2, double x1, double x2, double x)
 {
+	if ((x2 - x1) == 0)
+		return y2;
 	return y1 + (y2 - y1)*Signale(type, (x - x1) / (x2 - x1));
 }

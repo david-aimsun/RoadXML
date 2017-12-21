@@ -53,6 +53,8 @@ RapidXMLDOMElementImpl.h
 RapidXMLDOMParserImpl.h
 RapidXMLDOMElementImpl.cpp
 RapidXMLDOMParserImpl.cpp
+../../include/RoadXML/RoadXMLRollingSurfacePropsElement.h
+RoadXMLRollingSurfacePropsElement.cpp
 )
 
 IF(WIN32)

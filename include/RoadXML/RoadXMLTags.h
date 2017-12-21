@@ -62,6 +62,7 @@ namespace RoadXML
 	static const std::string kContourPieceTag				= "ContourPiece";
 	static const std::string kGroundTag						= "Ground";
 	static const std::string kMaterialTag					= "Material";
+	static const std::string kMaterialNameTag				= "material";
 	static const std::string kDiffuseTag					= "Diffuse";
 	static const std::string kAmbientTag					= "Ambient";
 	static const std::string kSpecularTag					= "Specular";
@@ -92,6 +93,14 @@ namespace RoadXML
 	static const std::string kOffset2x2DPointsTag			= "Offset2x2DPoints";
 	static const std::string kRepeatPatternTag				= "RepeatPattern";
 	static const std::string kRoughness2x2DTag				= "Roughness2x2D";
+	static const std::string kRollingSurfacePropsTag		= "RollingSurfaceProps";
+	static const std::string k3DLayersToExportTag			= "Export3DLayers";
+	static const std::string k3DRoadsGenerationElementTag   = "Generate3DRoads";
+	static const std::string kSolExportOptionsElementTag    = "SolExportOptions";
+
+	
+
+	
 	
 	// Element array tags
 	static const std::string kGroundsTag					= "Grounds";
@@ -234,4 +243,30 @@ namespace RoadXML
 	static const std::string kBankingLeftTag			= "bankingLeft";
 	static const std::string kBankingRightTag			= "bankingRight";
 	static const std::string kDoubleMarkingTag			= "doubleMarking";
+	static const std::string kWaterLevelTag				= "waterLevel";
+	static const std::string kRoughnessHeightTag		= "RoughnessHeight";
+	static const std::string kRoughnessLengthTag		= "RoughnessLength";
+	static const std::string kRoughnessHeightStdDeviationTag = "RoughnessHeightStdDeviation";
+	static const std::string kRoughnessLengthStdDeviationTag = "RoughnessLengthStdDeviation";
+	static const std::string kIsRollingSurfaceUpdateOnSaveTag  = "isRollingSurfaceUpdateOnSave";
+	static const std::string kRoadsAndIntersectionsTag         = "RoadsAndIntersections";
+	static const std::string kExportMarkingsTag                = "exportMarkings";
+	static const std::string kGeneratedGroundTag			   = "exportGeneratedGround";
+	static const std::string k3DObjectsTag					   = "export3DObjects";
+	static const std::string kExportGroundTag				   = "exportGround";
+	static const std::string kExternalFileTag				   = "exportExternalFile";
+	static const std::string kExternalFilePathTag			   = "exportedExternalFilePath";
+	static const std::string kMergeRollinSurfacesTag		   = "mergeRollinSurfaces";
+	static const std::string kCTolTag						   = "curvatureTolerence";
+	static const std::string kminStepTag					   = "minimumStep";
+	static const std::string kMaxStepTag					   = "maximumStep";
+	static const std::string kmaxNormalVariationTag			   = "maximumNormalVariation";
+	static const std::string kmaxWidthTag					   = "maximumWidth";
+	static const std::string kMinPointsDistanceTag			   = "minPointsDistance";
+	static const std::string kGenerateDebugFileTag			   = "generateDbugFile";
+	static const std::string kRemoveTrianglesTag			   = "removeBadTriangles";
+	static const std::string kCheckOrientaionsTag			   = "checkOrientations";
+
+
+	;
 }

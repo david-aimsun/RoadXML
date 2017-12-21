@@ -6,6 +6,7 @@
 #include "Transcode.h"
 
 #include "RoadXML/RoadXMLTags.h"
+#include "RoadXML/RoadXMLElements.h"
 
 #include <xercesc/util/XMLString.hpp>
 #include <xercesc/util/PlatformUtils.hpp>
@@ -14,6 +15,8 @@
 #include <xercesc/dom/DOM.hpp>
 #include <xercesc/dom/DOMNode.hpp>
 #include <xercesc/framework/LocalFileFormatTarget.hpp>
+
+#include <sstream>
 
 XERCES_CPP_NAMESPACE_USE
 
@@ -106,21 +109,27 @@ bool XercesDOMParserImpl::Load()
 	}
 	catch (const XMLException& e)
 	{
+		std::ostringstream oss;
 		char* szMessage = XMLString::transcode(e.getMessage());
-		printf("An error occured during parsing\n   Message: %s\n", szMessage);
+		oss << "Error while parsing: \"" << mFileName << "\": " << szMessage;
 		XMLString::release(&szMessage);
+		RoadXML::ourLastError = oss.str();
 		Clear();
 		return false;
 	}
 	catch (const DOMException& e)
 	{
-		printf("A DOM error occured during parsing\n   DOMException code: %d\n", e.code);
+		std::ostringstream oss;
+		oss << "Error while parsing: \"" << mFileName << "\"   DOMException code: \n" << e.code;
+		RoadXML::ourLastError = oss.str();
 		Clear();
 		return false;
 	}
 	catch (...)
 	{
-		printf("An error occured during parsing\n ");
+		std::ostringstream oss;
+		oss << "Error while parsing: \"" << mFileName << "\"";
+		RoadXML::ourLastError = oss.str();
 		Clear();
 		return false;
 	}
@@ -135,7 +144,9 @@ bool XercesDOMParserImpl::Load()
 
 	if (!pRootNode)
 	{
-		assert("Error : No root element node in document ");
+		std::ostringstream oss;
+		oss << "Error while parsing: \"" << mFileName << "\": No root element node in document";
+		RoadXML::ourLastError = oss.str();
 		Clear();
 		return false;
 	}

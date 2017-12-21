@@ -41,6 +41,7 @@ private:
 	void Clear();
 private:
 	rapidxml::xml_document<>*	mDoc;
+	std::vector<char> mContents;
 
 	// Version ID and name are stored here before being saved or asked
 	size_t			mVersionId;

@@ -9,6 +9,7 @@
 #include "RoadXMLTrackElements.h"
 #include "RoadXMLTrajectoryElements.h"
 #include "RoadXMLTrajectoryPartElements.h"
+#include "RoadXMLRollingSurfacePropsElement.h"
 #include "RoadXMLTags.h"
 #include "CountedPtr.h"
 #include "HashVector.h"
@@ -18,6 +19,8 @@
 
 namespace RoadXML
 {
+	ROADXML_API extern std::string ourLastError;
+
 	//! Load a RoadXML file. Returns the top most element
 	ROADXML_API RoadXML::Element* Load( const char * sInputFileName );
 
@@ -281,7 +284,7 @@ namespace RoadXML
 	class ROADXML_API SubNetworkElement : public Element
 	{
 	public:
-		SubNetworkElement() : mHeading(0), mGeneratedTerrainMaterial(0) {}
+		SubNetworkElement() : mHeading(0), mGeneratedTerrainMaterial(0), mRollingSurfacePropsElement(NULL){}
 
 		virtual const std::string&	GetName() const { return mName; }
 		virtual void				SetName( const std::string& name ) {mName=name;}
@@ -327,7 +330,9 @@ namespace RoadXML
 		/*! Optional attribute for SubNetwork defined in an external file. 
 		*/
 		CountedPtr<ExternalFileElement> mProxyFile;
+		CountedPtr<RollingSurfacePropsElement> mRollingSurfacePropsElement;
 		
+
 		virtual const std::string&	GetTagName() const{ return kSubNetworkTag; }
 		virtual	bool				LoadFromXMLElement(IDOMElement* iDOMElem, IDOMParser* parser);
 		virtual IDOMElement*		BuildXMLElement(IDOMParser*);
@@ -357,6 +362,9 @@ namespace RoadXML
 
 		std::vector<Contour> mTerrainContours;
 		
+
+
+
 		CountedPtr<GeneratedTerrainMaterialElement> mGeneratedTerrainMaterial;
 
 		virtual ~SubNetworkElement(){}

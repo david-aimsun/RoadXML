@@ -54,7 +54,7 @@ IDOMElement* RoadXML::VehicleTypeElement::BuildXMLElement(IDOMParser* parser)
 
 bool RoadXML::DecorationElement::LoadFromXMLElement(IDOMElement* elem, IDOMParser* parser)
 {
-	elem->GetStringAttribute(kMaterialTag, mMaterialName);
+	elem->GetStringAttribute(kMaterialNameTag, mMaterialName);
 
 	LoadChildren( elem, parser );
 
@@ -65,7 +65,7 @@ IDOMElement* RoadXML::DecorationElement::BuildXMLElement(IDOMParser* parser)
 {
 	IDOMElement* elementOut = parser->CreateDOMElement(GetTagName());
 
-	elementOut->SetStringAttribute(kMaterialTag, mMaterialName);
+	elementOut->SetStringAttribute(kMaterialNameTag, mMaterialName);
 
 	elementOut->AddChild(mUVMapping->BuildXMLElement(parser));
 	elementOut->AddChild(mPolyLine->BuildXMLElement(parser));
@@ -121,7 +121,7 @@ bool RoadXML::MarkingElement::LoadFromXMLElement(IDOMElement* elem, IDOMParser* 
 	elem->GetStringAttribute(kLeftToRightTag, mLeftToRight);
 	elem->GetStringAttribute(kRightToLeftTag, mRightToLeft);
 	elem->GetBooleanAttribute(kDoubleMarkingTag, mDoubleMarking);
-	elem->GetStringAttribute(kMaterialTag, mMaterialName);
+	elem->GetStringAttribute(kMaterialNameTag, mMaterialName);
 
 	LoadChildren( elem, parser );
 
@@ -139,7 +139,7 @@ IDOMElement* RoadXML::MarkingElement::BuildXMLElement(IDOMParser* parser)
 	elementOut->SetStringAttribute(kLeftToRightTag, mLeftToRight);
 	elementOut->SetStringAttribute(kRightToLeftTag, mRightToLeft);
 	elementOut->SetBooleanAttribute(kDoubleMarkingTag, mDoubleMarking);
-	elementOut->SetStringAttribute(kMaterialTag, mMaterialName);
+	elementOut->SetStringAttribute(kMaterialNameTag, mMaterialName);
 
 	//elementOut->AddChild(mMaterial->BuildXMLElement(parser));
 	elementOut->AddChild(mUVMapping->BuildXMLElement(parser));
@@ -233,7 +233,7 @@ bool RoadXML::LaneElement::LoadFromXMLElement(IDOMElement* elem, IDOMParser* par
 	elem->GetStringAttribute(kCirculationWayTag, mCirculationWay);
 	elem->GetDoubleAttribute(kSpeedLimitTag, mSpeedLimit);
 	elem->GetStringAttribute(kGroundTag, mGroundName );
-	elem->GetStringAttribute(kMaterialTag, mMaterialName );
+	elem->GetStringAttribute(kMaterialNameTag, mMaterialName );
 
 	LoadChildren( elem, parser );
 
@@ -250,7 +250,7 @@ IDOMElement* RoadXML::LaneElement::BuildXMLElement(IDOMParser* parser)
 	elementOut->SetDoubleAttribute(kSpeedLimitTag, mSpeedLimit);
 	if( mGroundName.size() )
 		elementOut->SetStringAttribute(kGroundTag, mGroundName );
-	elementOut->SetStringAttribute(kMaterialTag, mMaterialName );
+	elementOut->SetStringAttribute(kMaterialNameTag, mMaterialName );
 
 	elementOut->AddChild(mVehicleAuth->BuildXMLElement(parser));
 	//elementOut->AddChild(mMaterial->BuildXMLElement(parser));

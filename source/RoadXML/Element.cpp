@@ -105,6 +105,12 @@ namespace RoadXML
 		if (tagName == kTrajectoryElementTag)		return new TrajectoryPieceElement();
 		if (tagName == kGeneratedTerrainMaterialTag) return new GeneratedTerrainMaterialElement();
 
+		if (tagName == kRollingSurfacePropsTag)				return new RollingSurfacePropsElement();
+		if (tagName == k3DLayersToExportTag)				return new Export3DLayersElement();
+		if (tagName == k3DRoadsGenerationElementTag)		return new Generate3DRoadsElement();
+		if (tagName == kSolExportOptionsElementTag)			return new SolExportOptionsElement();
+
+
 		return NULL;// Unknown element
 	}
 }

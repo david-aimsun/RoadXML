@@ -38,7 +38,7 @@ RoadXML::RoughnessType RoadXML::ToGranulosityType(const char* name)
 
 RoadXML::GroundElement::GroundElement() :
 	mAverageGrip(1.0),
-	mRoughness( new RoughnessElement())
+	mRoughness(new RoughnessElement()), mWaterLevel(0)
 {
 	
 }
@@ -58,14 +58,18 @@ bool RoadXML::GroundElement::LoadFromXMLElement(IDOMElement* elem, IDOMParser* p
 	elem->GetStringAttribute(kNameTag, mName );
 	elem->GetDoubleAttribute(kGripTag, mAverageGrip);
 	elem->GetStringAttribute(kTypeTag, mType);
+	elem->GetDoubleAttribute(kWaterLevelTag, mWaterLevel);
 
 	//Previous versions
 	if (parser->GetVersionId() < MakeVersionID(2, 4, 1))
 	{
-		double averageGranulosityTmp;
-		elem->GetDoubleAttribute(kGranulosityTag, averageGranulosityTmp);
+		double granulosityTmp;
+		elem->GetDoubleAttribute(kGranulosityTag, granulosityTmp);
 
-		mRoughness->GetAnalytic()->SetAverageGranulosity(averageGranulosityTmp);
+		mRoughness->GetAnalytic()->SetRoughnessHeight(granulosityTmp*0.01);
+		mRoughness->GetAnalytic()->SetRoughnessLength(0.01);
+		mRoughness->GetAnalytic()->SetRoughnessHeightStdDeviation(0);
+		mRoughness->GetAnalytic()->SetRoughnessLengthStdDeviation(0);
 
 	}
 
@@ -81,8 +85,9 @@ IDOMElement* RoadXML::GroundElement::BuildXMLElement(IDOMParser* parser)
 	elementOut->SetStringAttribute(kNameTag, mName );
 	elementOut->SetDoubleAttribute(kGripTag, mAverageGrip);
 	elementOut->SetStringAttribute(kTypeTag, mType );
-
+	elementOut->SetDoubleAttribute(kWaterLevelTag,mWaterLevel);
 	elementOut->AddChild(mRoughness->BuildXMLElement(parser));
+	
 
 	return elementOut;
 }
@@ -99,6 +104,7 @@ bool RoadXML::GroundElement::LoadChild(IDOMElement* childElement, IDOMParser* pa
 		{
 			mRoughness = static_cast<RoughnessElement*>(newElement.Get());
 		}
+
 	}
 	else
 		return false;
@@ -194,6 +200,7 @@ bool RoadXML::RoughnessElement::LoadChild(IDOMElement* childElement, IDOMParser*
 			{
 				mOffset = static_cast<Point2x2DElement*>(newElement.Get());
 			}
+		
 		}
 		else
 			return false;
@@ -274,13 +281,30 @@ void RoadXML::RoughnessElement::GetInterpolatedOffsetZAndBanking(double distance
 // Describes how is the Analytic ground has roughness
 
 RoadXML::AnalyticElement::AnalyticElement() :
-mAverageGranulosity(0.5)
+mRoughnessHeight(0.005),
+mRoughnessLength(0.01),
+mRoughnessHeightStdDeviation(0),
+mRoughnessLengthStdDeviation(0)
 {
 }
 
 bool RoadXML::AnalyticElement::LoadFromXMLElement(IDOMElement* elem, IDOMParser* parser)
 {
-	elem->GetDoubleAttribute(kGranulosityTag, mAverageGranulosity);
+	double tmpGranulosity = 0;
+	if (elem->GetDoubleAttribute(kGranulosityTag, tmpGranulosity))
+	{
+		mRoughnessHeight = tmpGranulosity*stk::convToSI(stk::TUnitCentiMetre, 1);
+		mRoughnessLength = stk::convToSI(stk::TUnitCentiMetre, 1);
+		mRoughnessHeightStdDeviation = 0;
+		mRoughnessLengthStdDeviation = 0;
+	}
+	else
+	{
+		elem->GetDoubleAttribute(kRoughnessHeightTag, mRoughnessHeight);
+		elem->GetDoubleAttribute(kRoughnessLengthTag, mRoughnessLength);
+		elem->GetDoubleAttribute(kRoughnessHeightStdDeviationTag, mRoughnessHeightStdDeviation);
+		elem->GetDoubleAttribute(kRoughnessLengthStdDeviationTag, mRoughnessLengthStdDeviation);
+	}
 
 	LoadChildren(elem, parser);
 
@@ -292,7 +316,10 @@ IDOMElement* RoadXML::AnalyticElement::BuildXMLElement(IDOMParser* parser)
 {
 	IDOMElement* elementOut = parser->CreateDOMElement(GetTagName());
 
-	elementOut->SetDoubleAttribute(kGranulosityTag, mAverageGranulosity);
+	elementOut->SetDoubleAttribute(kRoughnessHeightTag, mRoughnessHeight);
+	elementOut->SetDoubleAttribute(kRoughnessLengthTag, mRoughnessLength);
+	elementOut->SetDoubleAttribute(kRoughnessHeightStdDeviationTag, mRoughnessHeightStdDeviation);
+	elementOut->SetDoubleAttribute(kRoughnessLengthStdDeviationTag, mRoughnessLengthStdDeviation);
 
 	return elementOut;
 }

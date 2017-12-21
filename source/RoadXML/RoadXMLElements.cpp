@@ -13,6 +13,8 @@
 #include <sstream>
 
 
+std::string RoadXML::ourLastError = "";
+
 /////////////////////////////////////////////////////////////////////////////////
 
 void LoadContour( std::vector< stk::Vector3 >& contour, IDOMElement* iDOMElem)
@@ -52,6 +54,8 @@ IDOMElement* BuildXMLContour( const std::vector< stk::Vector3 >& contour, IDOMPa
 
 RoadXML::Element* RoadXML::Load( const char * sInputFileName )
 {
+	ourLastError.clear();
+
 	 //Create a parser 
 	CountedPtr<IDOMParser> pParser = NewDOMParserRapid( sInputFileName );
 
@@ -261,6 +265,8 @@ IDOMElement* RoadXML::NetworkElement::BuildXMLElement(IDOMParser* parser)
 	BuildChildrenArray( mSubNetworkArray, kSubNetworksTag, networkElement, parser);
 	BuildChildrenArray( mRoadArray, kRoadsTag, networkElement, parser);
 
+
+
 	return networkElement;
 }
 
@@ -273,6 +279,7 @@ void RoadXML::SubNetworkElement::Clear()
 	mTerrain = NULL;
 	mRollingSurface = NULL;
 	mPhysicalSurface = NULL;
+	mRollingSurfacePropsElement = NULL;
 	mProxyFile = NULL;
 	mGroundArray.clear();
 	mMarkingArray.clear();
@@ -282,6 +289,7 @@ void RoadXML::SubNetworkElement::Clear()
 	mTrafficLightGroupArray.clear();
 	mGeneratedTerrainMaterial = NULL;
 	mTerrainContours.clear();
+
 }
 
 bool RoadXML::SubNetworkElement::LoadFromXMLElement(IDOMElement* elem, IDOMParser* parser)
@@ -310,6 +318,7 @@ IDOMElement* RoadXML::SubNetworkElement::BuildXMLElement(IDOMParser* parser)
 	elementOut->SetDoubleAttribute(kYTag, mPosition.y);
 	elementOut->SetDoubleAttribute(kZTag, mPosition.z);
 
+
 	if( mProxyFile )
 	{
 		elementOut->AddChild( mProxyFile->BuildXMLElement(parser) );
@@ -324,11 +333,16 @@ IDOMElement* RoadXML::SubNetworkElement::BuildXMLElement(IDOMParser* parser)
 		{
 			elementOut->AddChild(mRollingSurface->BuildXMLElement(parser));
 		}
-		if( mPhysicalSurface )
+		if (mRollingSurfacePropsElement) // Rolling surface propreties
+		{
+			elementOut->AddChild(mRollingSurfacePropsElement->BuildXMLElement(parser));
+		}
+		if (mPhysicalSurface)
 		{
 			elementOut->AddChild(mPhysicalSurface->BuildXMLElement(parser));
 		}
-		
+
+				
 		{	// RoadNetwork Part
 			IDOMElement* roadNetwork = parser->CreateDOMElement(kRoadNetworkTag);
 			elementOut->AddChild(roadNetwork);
@@ -414,11 +428,17 @@ bool RoadXML::SubNetworkElement::LoadChild( IDOMElement* childElement, IDOMParse
 			else if(tagName == kExternalSurfaceTag)
 			{
 				mRollingSurface = dynamic_cast<ExternalFileElement*>(newElement.Get() );
+
+			}
+			else if (tagName == kRollingSurfacePropsTag)
+			{
+				mRollingSurfacePropsElement = dynamic_cast<RollingSurfacePropsElement*>(newElement.Get());
 			}
 			else if(tagName == kExternalPhysicalSurfaceTag)
 			{
 				mPhysicalSurface = dynamic_cast<ExternalFileElement*>(newElement.Get());
 			}
+			
 			else if(tagName == kProxyFileTag)
 			{
 				mProxyFile = dynamic_cast<ExternalFileElement*>(newElement.Get() );
@@ -443,10 +463,10 @@ bool RoadXML::SubNetworkElement::LoadChild( IDOMElement* childElement, IDOMParse
 			{
 				myTrajectoryPartArray.push_back( dynamic_cast<TrajectoryPartElement*>(newElement.Get()) );
 			}
-			//else if (tagName == kGeneratedTerrainMaterialTag )
-			//{
-			//	mGeneratedTerrainMaterial = dynamic_cast<GeneratedTerrainMaterialElement*>(newElement.Get());
-			//}
+			else if (tagName == kGeneratedTerrainMaterialTag )
+			{
+				mGeneratedTerrainMaterial = dynamic_cast<GeneratedTerrainMaterialElement*>(newElement.Get());
+			}
 			else if (tagName == kMaterialTag)
 			{
 				mMaterialArray.push_back( dynamic_cast<MaterialElement*>(newElement.Get()) );
@@ -553,7 +573,7 @@ bool RoadXML::IntersectionElement::LoadFromXMLElement(IDOMElement* elem, IDOMPar
 {
 	mBannedLinks.clear();
 
-	elem->GetStringAttribute(kMaterialTag, mMaterialName);
+	elem->GetStringAttribute(kMaterialNameTag, mMaterialName);
 
 	return ConnectionElement::LoadFromXMLElement( elem, parser);
 }
@@ -567,7 +587,7 @@ IDOMElement* RoadXML::IntersectionElement::BuildXMLElement(IDOMParser* parser)
 	elementOut->SetDoubleAttribute(kYTag, mPosition.y);
 	elementOut->SetDoubleAttribute(kZTag, mPosition.z);
 	if( mMaterialName.size() )
-		elementOut->SetStringAttribute(kMaterialTag, mMaterialName);
+		elementOut->SetStringAttribute(kMaterialNameTag, mMaterialName);
 
 	BuildChildrenArray( mClippedDataArray, kClippedDatasTag, elementOut, parser);
 	BuildChildrenArray(mContours, kContoursTag, elementOut, parser);

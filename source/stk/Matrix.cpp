@@ -8,6 +8,102 @@
 
 using namespace stk;
 
+
+
+//--------------------------------------------------------------------------------------------
+//							Functions déclarations
+//--------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------
+//	Assumes that matrix is a Matrix(3, 3)
+bool determinantMatrix33(const Matrix &matrix, double &determinant);
+
+//--------------------------------------------------------------------------------------------
+//	Assumes that matrix is a Matrix(4, 4) and minorMatrices is an array of Matrix(3,3)
+//	Use the first lines of the matrix
+bool determinantMatrix44(const Matrix &matrix, double &determinant, Matrix minorMatrices[4], double minorMatricesDet[4]);
+
+//--------------------------------------------------------------------------------------------
+//	Assumes that matrix is an Matrix(4, 4)
+bool inverseMatrix44(Matrix &matrix);
+
+
+//--------------------------------------------------------------------------------------------
+//							Matrix44 Functions Definitions
+//--------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------
+bool determinantMatrix44(const Matrix &matrix, double &determinant, Matrix minorMatrices[4], double minorMatricesDet[4])
+{
+	for (int i = 0; i < 4; ++i)
+	{
+		matrix.minorMatrix(minorMatrices[i], 3, i);
+		if (!determinantMatrix33(minorMatrices[i], minorMatricesDet[i]))
+			return false;
+		std::cout << "Det=" << minorMatricesDet[i] << std::endl;
+	}
+	
+	determinant = 0.0;
+	double sign = -1.0;
+	for (int i = 0; i < 4; ++i)
+	{
+		determinant += sign * matrix(3, i) * minorMatricesDet[i];
+		sign *= -1.0;
+	}
+	return determinant != 0.;
+}
+
+//--------------------------------------------------------------------------------------------
+bool inverseMatrix44(Matrix &matrix)
+{
+	Matrix oldMatrice(matrix);
+	double minorMatricesDet[4][4];
+	Matrix minorMatrices[4][4] = {
+		{ Matrix(3, 3), Matrix(3, 3), Matrix(3, 3), Matrix(3, 3) },
+		{ Matrix(3, 3), Matrix(3, 3), Matrix(3, 3), Matrix(3, 3) },
+		{ Matrix(3, 3), Matrix(3, 3), Matrix(3, 3), Matrix(3, 3) },
+		{ Matrix(3, 3), Matrix(3, 3), Matrix(3, 3), Matrix(3, 3) }
+	};
+	double determinant = 0.0;
+
+	//	Calculate the determinant using the first line of the matrix
+	if (!determinantMatrix44(oldMatrice, determinant, minorMatrices[3], minorMatricesDet[3]))
+		return false;
+
+	//	Calculate the last cofactor matrices and their determinant
+	for (int i = 0; i < 4; ++i)
+	{
+		oldMatrice.minorMatrix(minorMatrices[0][i], 0, i);
+		oldMatrice.minorMatrix(minorMatrices[1][i], 1, i);
+		oldMatrice.minorMatrix(minorMatrices[2][i], 2, i);
+		if (!determinantMatrix33(minorMatrices[0][i], minorMatricesDet[0][i]))
+			return false;
+		if (!determinantMatrix33(minorMatrices[1][i], minorMatricesDet[1][i]))
+			return false;
+		if (!determinantMatrix33(minorMatrices[2][i], minorMatricesDet[2][i]))
+			return false;
+	}
+
+	//	Calculate the inverse matrix
+	double sign_i = 1.0;
+	for (int i = 0; i < 4; ++i)
+	{
+		double sign_j = 1.0;
+		for (int j = 0; j < 4; ++j)
+		{
+			matrix(i, j) = sign_i * sign_j * minorMatricesDet[j][i] / determinant;
+			sign_j *= -1.0;
+		}
+		sign_i *= -1.0;
+	}
+
+	return true;
+}
+
+
+//--------------------------------------------------------------------------------------------
+//							Matrix33 Methods Definitions
+//--------------------------------------------------------------------------------------------
 Matrix33::Matrix33() : stk::Matrix(3,3) {}
 Matrix33::~Matrix33() {}
 Matrix33::Matrix33(double m00, double m01, double m02,
@@ -51,6 +147,22 @@ bool Matrix33::inverse()
 	data[8] = ( temp.data[0]*temp.data[4] - temp.data[1]*temp.data[3] ) * det;
 	return true;
 }
+
+
+//--------------------------------------------------------------------------------------------
+bool determinantMatrix33(const Matrix &matrix, double &determinant)
+{
+	determinant	=	matrix(0, 0) * (matrix(1, 1) * matrix(2, 2) - matrix(1, 2) * matrix(2, 1));
+	determinant	-=	matrix(0, 1) * (matrix(1, 0) * matrix(2, 2) - matrix(1, 2) * matrix(2, 0));
+	determinant	+=	matrix(0, 2) * (matrix(1, 0) * matrix(2, 1) - matrix(1, 1) * matrix(2, 0));
+	return true;
+}
+
+
+
+//--------------------------------------------------------------------------------------------
+//					Matrix Global Functions 
+//--------------------------------------------------------------------------------------------
 
 bool stk::isZero(const stk::Matrix& mat)
 {
@@ -263,12 +375,55 @@ void stk::Matrix::lmatrix( stk::Matrix &lmat, int n, int l) const
 	}
 }
 
+//--------------------------------------------------------------------------------------------
+void stk::Matrix::minorMatrix(stk::Matrix &matrix, int line, int col) const
+{
+	if (sizei < 2 || sizej < 2)
+		return;
+	matrix.resize(sizei - 1, sizej - 1, false);
+
+	int ni = 0;
+	for (int i = 0; i < sizei; ++i)
+	{
+		if (i == line)
+			continue;
+
+		int nj = 0;
+		for (int j = 0; j < sizej; ++j)
+		{
+			if (j == col)
+				continue;
+			matrix(ni, nj++) = (*this)(i, j);
+		}
+
+		ni += 1;
+	}
+}
+
+//--------------------------------------------------------------------------------------------
 double stk::Matrix::determinant() const
 {
+	double det = 0.;
+
+	//	Optimized version for 3x3 matrix
+	if (sizei == 3 && sizej == 3)
+	{
+		if (determinantMatrix33(*this, det))
+			return det;
+	}
+	//	Optimized version for 4x4 matrix
+	else if (sizei == 4 && sizej == 4)
+	{
+		double minorMatricesDet[4];
+		Matrix minorMatrices[4] = { Matrix(3, 3), Matrix(3, 3), Matrix(3, 3), Matrix(3, 3) };
+		if (determinantMatrix44(*this, det, minorMatrices, minorMatricesDet))
+			return det;
+	}
+
+	//	General case
 	int n = sizei;
 	int k=n-1;
 
-	double res = 0.;
 	double sign=1.;
 
 	stk::Matrix lmat(k,k);
@@ -279,10 +434,10 @@ double stk::Matrix::determinant() const
 	for(int i=0;i<n;i++)
 	{
 		lmatrix(lmat,n,i);
-		res=res+sign*(*this)(i,0)*lmat.determinant();
+		det = det + sign*(*this)(i, 0)*lmat.determinant();
 		sign=-sign;
 	}
-	return res;
+	return det;
 }
 
 void exchangeRow(stk::Matrix &M, int k, int l)
@@ -305,6 +460,13 @@ bool stk::Matrix::inverse()
 	//the matrix must be square to be inverted
 	if (sizei != sizej)
 		return false;
+
+	//	Optimized implementation for 4x4 matrix
+	if (sizei == 4 && sizej == 4)
+	{
+		if (inverseMatrix44(*this))
+			return true;
+	}
 
 	//std::vector<bool> I(sizei,false);
 	bool *I = new bool[sizei];
@@ -501,6 +663,10 @@ void stk::Matrix::dump(std::ostream& out) const
 	}
 	out.flush();
 }
+
+
+
+//--------------------------------------------------------------------------------------------
 
 //NR ALTERNATIVE
 //#include <nr.h>

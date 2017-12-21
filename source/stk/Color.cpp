@@ -96,6 +96,7 @@ void Color::Clamp()
 
 
 Color::Color()
+	: red( 0.0 ), green( 0.0 ), blue( 0.0 ), alpha( 1.0 )
 	{ }
 
 Color::Color(const double rr,const double gg,const double bb,const double aa )

@@ -93,6 +93,7 @@ bool RoadXML::MaterialElement::LoadFromXMLElement(IDOMElement* elem, IDOMParser*
 {
 	elem->GetDoubleAttribute(kShininessTag, mShininess);
 	elem->GetStringAttribute(kNameTag, mName);
+	elem->GetStringAttribute(kMaterialBRDFTag, mBRDF);
 
 	LoadChildren( elem, parser );
 
@@ -130,11 +131,7 @@ IDOMElement* RoadXML::MaterialElement::BuildXMLElement(IDOMParser* parser)
 		elementOut->AddChild( mAmbientOcclusionMapChanel->BuildXMLElement(parser) );
 	
 	if( !mBRDF.empty())
-	{
-		IDOMElement* brdfChild = parser->CreateDOMElement(kMaterialBRDFTag);	
-		brdfChild->SetStringAttribute( kPathTag, mBRDF );
-		elementOut->AddChild( brdfChild );
-	}
+		elementOut->SetStringAttribute( kMaterialBRDFTag, mBRDF );
 
 	return elementOut;
 }
@@ -162,8 +159,6 @@ bool RoadXML::MaterialElement::LoadChild( IDOMElement* childElement, IDOMParser*
 			mSpecularMapChanel = dynamic_cast<MaterialChanelElement*>(newElement.Get());
 		else if (tagName == kAmbientOcclusionMapTag) 
 			mAmbientOcclusionMapChanel = dynamic_cast<MaterialChanelElement*>(newElement.Get());
-		else if (tagName == kMaterialBRDFTag) 
-			childElement->GetStringAttribute(kPathTag, mBRDF);
 	}
 	else 
 		return false;
@@ -237,7 +232,7 @@ bool RoadXML::GeneratedTerrainMaterialElement::LoadFromXMLElement(IDOMElement* i
 	
 	iDOMElem->GetDoubleAttribute(kUVHeadingTag, mUVHeading);
 
-	iDOMElem->GetStringAttribute(kMaterialTag, mMaterialName);
+	iDOMElem->GetStringAttribute(kMaterialNameTag, mMaterialName);
 	
 	LoadChildren( iDOMElem, parser );
 
@@ -249,7 +244,7 @@ IDOMElement* RoadXML::GeneratedTerrainMaterialElement::BuildXMLElement(IDOMParse
 	IDOMElement* elementOut = parser->CreateDOMElement(GetTagName());
 
 	if( mMaterialName.size() )
-		elementOut->SetStringAttribute(kMaterialTag, mMaterialName);
+		elementOut->SetStringAttribute(kMaterialNameTag, mMaterialName);
 	else if(mMaterial)
 		elementOut->AddChild(mMaterial->BuildXMLElement(parser));
 		

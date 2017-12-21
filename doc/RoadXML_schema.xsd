@@ -26,7 +26,6 @@
                                       <xs:element maxOccurs="unbounded" name="Intersection" minOccurs="0">
                                         <xs:complexType>
                                           <xs:all>
-                                            <xs:element name="Material" type="MaterialCT" minOccurs="0" maxOccurs="1" />
                                             <xs:element name="BannedLinks">
                                               <xs:complexType>
                                                 <xs:sequence>
@@ -75,6 +74,7 @@
                                           <xs:attribute name="uVScaleY" type="xs:double" use="optional" />
                                           <xs:attribute name="uVHeading" type="xs:double" use="optional" />
                                           <xs:attribute name="groundName" type="xs:string" use="optional" />
+                                          <xs:attribute name="material" type="xs:string" use="required" />
                                         </xs:complexType>
                                       </xs:element>
                                     </xs:sequence>
@@ -186,9 +186,9 @@
                                       <xs:element name="Marking" maxOccurs="unbounded" minOccurs="0">
                                         <xs:complexType>
                                           <xs:all>
-                                            <xs:element name="Material" type="MaterialCT" minOccurs="1" maxOccurs="1" />
                                             <xs:element name="UVMapping" type="UVMappingCT" maxOccurs="1" minOccurs="1" />
                                           </xs:all>
+                                          <xs:attribute name="material" type="xs:string" use="optional" />
                                           <xs:attribute name="width" type="xs:double" use="required" />
                                           <xs:attribute name="leftToRight" type="xs:string" use="required" />
                                           <xs:attribute name="lineLength" type="xs:double" use="required" />
@@ -292,9 +292,7 @@
                           <xs:element name="ClippedDatas" type="MarkClippedDataCT" maxOccurs="1" minOccurs="0" />
                           <xs:element name="GeneratedTerrainMaterial">
                             <xs:complexType>
-                              <xs:sequence>
-                                <xs:element name="Material" type="MaterialCT" />
-                              </xs:sequence>
+                              <xs:attribute name="material" type="xs:string" use="optional" />
                             </xs:complexType>
                           </xs:element>
                           <xs:element name="ExternalPhysicSurface" type="ExternalElementCT">
@@ -387,7 +385,9 @@
               </xs:element>
               <xs:element name="GeneratedTerrainMaterial">
                 <xs:complexType>
-                  <xs:sequence />
+                  <xs:sequence>
+                    <xs:element name="material" type="MaterialCT" maxOccurs="1" minOccurs="1" />
+                  </xs:sequence>
                 </xs:complexType>
               </xs:element>
             </xs:all>
@@ -427,8 +427,18 @@
       </xs:element>
       <xs:element name="Emissive" type="ChanelCT" minOccurs="0" maxOccurs="1">
       </xs:element>
+      <xs:element name="NormalMap" type="ChanelCT" minOccurs="0" maxOccurs="1">
+      </xs:element>
+      <xs:element name="ReflectionMap" type="ChanelCT" minOccurs="0" maxOccurs="1">
+      </xs:element>
+      <xs:element name="SpecularMap" type="ChanelCT" minOccurs="0" maxOccurs="1">
+      </xs:element>
+      <xs:element name="AmbientOcclusionMap" type="ChanelCT" minOccurs="0" maxOccurs="1">
+      </xs:element>
     </xs:all>
     <xs:attribute name="shininess" type="xs:double" use="optional" />
+    <xs:attribute name="name" type="xs:string" use="optional" />
+    <xs:attribute name="BRDF" type="xs:string" use="optional" />
   </xs:complexType>
   <xs:complexType name="UVMappingCT">
     <xs:attribute name="leftU" type="xs:double" use="required" />
@@ -563,9 +573,9 @@
   <xs:complexType name="LaneCT">
     <xs:all>
       <xs:element name="VehicleType" type="VehicleTypeCT" maxOccurs="1" minOccurs="1" />
-      <xs:element name="Material" type="MaterialCT" maxOccurs="1" minOccurs="1" />
       <xs:element name="UVMapping" type="UVMappingCT" maxOccurs="1" minOccurs="1" />
     </xs:all>
+    <xs:attribute name="material" type="xs:string" use="required" />
     <xs:attribute name="circulationWay" type="xs:string" use="required" />
     <xs:attribute name="name" type="xs:string" use="required" />
     <xs:attribute name="speedLimit" type="xs:double" use="required" />
@@ -577,10 +587,10 @@
       <xs:element name="Decoration" maxOccurs="1" minOccurs="0">
         <xs:complexType>
           <xs:all>
-            <xs:element name="Material" type="MaterialCT" minOccurs="1" maxOccurs="1" />
             <xs:element name="UVMapping" type="UVMappingCT" minOccurs="1" maxOccurs="1" />
             <xs:element name="PolyLine" type="PolyLineCT" minOccurs="1" maxOccurs="1" />
           </xs:all>
+          <xs:attribute name="material" type="xs:string" use="required" />
         </xs:complexType>
       </xs:element>
     </xs:sequence>

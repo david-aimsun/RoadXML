@@ -5,8 +5,9 @@
 
 #include "Transcode.h"
 #include "RoadXML/RoadXMLTags.h"
+#include "RoadXML/RoadXMLElements.h"
 #include <algorithm>
-#include <iostream>
+#include <sstream>
 #include <fstream>
 
 #include "rapidxml_print.hpp"
@@ -83,8 +84,6 @@ bool RapidXMLDOMParserImpl::Load()
 		return false;
 
 	Clear();
-
-	char *contents;
 	size_t size = 0;
 
 #ifdef WIN32
@@ -97,35 +96,49 @@ bool RapidXMLDOMParserImpl::Load()
 	{
 		fseek(fp, 0, SEEK_END);
 		size = ftell(fp);
-		contents = new char[size + 1];
+		mContents.resize(size + 1);
 		rewind(fp);
-		fread(contents, 1, size, fp);
-		contents[size] = 0;
+		fread(&mContents[0], 1, size, fp);
+		mContents[size] = 0;
 		fclose(fp);
 	}
 
 	if (size == 0)
 	{
-		delete[] contents;
 		return false;
 	}
 
 	mDoc = new rapidxml::xml_document<>();
 
 	try {
-		mDoc->parse<0>(contents);
+		mDoc->parse<0>(&mContents[0]);
 	}
 	catch (rapidxml::parse_error& e)
 	{
 		std::cout << "Error while parsing: " << mFileName << std::endl;
 		std::cout << "Error: " << e.what() << std::endl;
 		std::cout << "Here : " << e.where<char>() << std::endl;
+
+		int line = 0;
+		for (int i = 0; i < mContents.size(); i++)
+		{
+			if (mContents[i] == '\n')
+				line++;
+			if (e.where<char>() == &mContents[i])
+				break;
+		}
+		std::ostringstream oss;
+		oss << "Error while parsing: \"" << mFileName << "\". \nError: " << e.what() << ". \n At line : " << line;
+		RoadXML::ourLastError = oss.str();
+
 		Clear();
 		return false;
 	}
 	catch (...)
 	{
-		printf("An error occured during parsing\n ");
+		std::ostringstream oss;
+		oss << "Error while parsing: \"" << mFileName << "\"";
+		RoadXML::ourLastError = oss.str();
 		Clear();
 		return false;
 	}
@@ -133,7 +146,9 @@ bool RapidXMLDOMParserImpl::Load()
 	rapidxml::xml_node<> *root = mDoc->first_node();
 	if (!root)
 	{
-		assert("Error : No root element node in document ");
+		std::ostringstream oss;
+		oss << "Error while parsing: \"" << mFileName << "\":  No root element node in document";
+		RoadXML::ourLastError = oss.str();
 		Clear();
 		return false;
 	}
@@ -194,7 +209,7 @@ bool RapidXMLDOMParserImpl::Save()
 #ifdef WIN32
 	std::ofstream out(Transcode(mFileName).c_str());
 #else
-	std::ofstream out(mFileName.c_str());
+	std::ofstream out(mFileName);
 #endif
 	out << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>" << std::endl;
 	out << *mDoc;
