@@ -8,7 +8,7 @@ using namespace stk;
 stk::Quaternion::Quaternion():s(0)
 {}
 
-stk::Quaternion::Quaternion(double s, Vector3 v) : s(s),v(v)
+stk::Quaternion::Quaternion(double s, const Vector3& v) : s(s),v(v)
 {}
 
 bool stk::Quaternion::operator== (const Quaternion &Q) const
@@ -113,7 +113,7 @@ void stk::QuaternionToEulerAngles(const Quaternion& q, double& Roulis, double& T
 	Lacet   = atan2( 2 * (q.v.x * q.v.y + q.s * q.v.z), (square(q.s) + square(q.v.x) - square(q.v.y) - square(q.v.z)));      
 }
 
-Vector3 stk::ApplyRotation(const Quaternion& q, Vector3 Vin)
+Vector3 stk::ApplyRotation(const Quaternion& q, const Vector3& Vin)
 {
 	Vector3 Vout = (2 * square(q.s) - 1) * Vin
 					+ 2 * (q.v * Vin) * q.v

@@ -240,6 +240,7 @@ bool RoadXML::ClippedDataElement::LoadFromXMLElement(IDOMElement* elem, IDOMPars
 	elem->GetStringAttribute(kNameTag, mName);
 	elem->GetDoubleAttribute(kMassTag, mMass);
 	elem->GetDoubleAttribute(kSequenceOrientationTag, mSequenceOrientation);
+	elem->GetBooleanAttribute( kIsSequenceAsOneTag, mIsSequenceAsOne );
 
 	LoadChildren( elem, parser );
 
@@ -253,6 +254,7 @@ IDOMElement* RoadXML::ClippedDataElement::BuildXMLElement(IDOMParser* parser)
 	elementOut->SetStringAttribute(kNameTag, mName);
 	elementOut->SetDoubleAttribute(kMassTag, mMass);
 	elementOut->SetDoubleAttribute(kSequenceOrientationTag, mSequenceOrientation);
+	elementOut->SetBooleanAttribute( kIsSequenceAsOneTag, mIsSequenceAsOne );
 
 	if( mSequenceX ) elementOut->AddChild( mSequenceX->BuildXMLElement(parser) );
 	if( mSequenceY ) elementOut->AddChild( mSequenceY->BuildXMLElement(parser) );

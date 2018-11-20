@@ -98,6 +98,9 @@ namespace RoadXML
 	static const std::string k3DRoadsGenerationElementTag   = "Generate3DRoads";
 	static const std::string kSolExportOptionsElementTag    = "SolExportOptions";
 
+	static const std::string kBorderOffsetTag				= "BorderOffset";
+	static const std::string kBorderModifierTag				= "BorderModifier";
+	static const std::string kProfileModifierTag			= "ProfileModifier";
 	
 
 	
@@ -213,6 +216,7 @@ namespace RoadXML
 	static const std::string kThresholdTag				= "threshold";
 	static const std::string kMassTag					= "mass";
 	static const std::string kSequenceOrientationTag	= "sequenceOrientation";
+	static const std::string kIsSequenceAsOneTag		= "treatSequenceAsOne";
 	static const std::string kMarkingOffsetTag			= "markingOffset";
 	static const std::string kMarkingNameTag			= "markingName";
 	static const std::string kUVScaleXTag				= "uVScaleX";
@@ -248,25 +252,34 @@ namespace RoadXML
 	static const std::string kRoughnessLengthTag		= "RoughnessLength";
 	static const std::string kRoughnessHeightStdDeviationTag = "RoughnessHeightStdDeviation";
 	static const std::string kRoughnessLengthStdDeviationTag = "RoughnessLengthStdDeviation";
-	static const std::string kIsRollingSurfaceUpdateOnSaveTag  = "isRollingSurfaceUpdateOnSave";
-	static const std::string kRoadsAndIntersectionsTag         = "RoadsAndIntersections";
-	static const std::string kExportMarkingsTag                = "exportMarkings";
-	static const std::string kGeneratedGroundTag			   = "exportGeneratedGround";
-	static const std::string k3DObjectsTag					   = "export3DObjects";
-	static const std::string kExportGroundTag				   = "exportGround";
-	static const std::string kExternalFileTag				   = "exportExternalFile";
-	static const std::string kExternalFilePathTag			   = "exportedExternalFilePath";
-	static const std::string kMergeRollinSurfacesTag		   = "mergeRollinSurfaces";
-	static const std::string kCTolTag						   = "curvatureTolerence";
-	static const std::string kminStepTag					   = "minimumStep";
-	static const std::string kMaxStepTag					   = "maximumStep";
-	static const std::string kmaxNormalVariationTag			   = "maximumNormalVariation";
-	static const std::string kmaxWidthTag					   = "maximumWidth";
-	static const std::string kMinPointsDistanceTag			   = "minPointsDistance";
-	static const std::string kGenerateDebugFileTag			   = "generateDbugFile";
-	static const std::string kRemoveTrianglesTag			   = "removeBadTriangles";
-	static const std::string kCheckOrientaionsTag			   = "checkOrientations";
+	static const std::string kIsRollingSurfaceUpdateOnSaveTag	= "isRollingSurfaceUpdateOnSave";
+	static const std::string kRoadsAndIntersectionsTag			= "RoadsAndIntersections";
+	static const std::string kExportMarkingsTag					= "exportMarkings";
+	static const std::string kGeneratedGroundTag				= "exportGeneratedGround";
+	static const std::string k3DObjectsTag						= "export3DObjects";
+	static const std::string kExportGroundTag					= "exportGround";
+	static const std::string kExternalFileTag					= "exportExternalFile";
+	static const std::string kExternalFilePathTag				= "exportedExternalFilePath";
+	static const std::string kMergeRollinSurfacesTag			= "mergeRollinSurfaces";
+	static const std::string kCTolTag							= "curvatureTolerence";
+	static const std::string kminStepTag						= "minimumStep";
+	static const std::string kMaxStepTag						= "maximumStep";
+	static const std::string kmaxNormalVariationTag				= "maximumNormalVariation";
+	static const std::string kmaxWidthTag						= "maximumWidth";
+	static const std::string kMinPointsDistanceTag				= "minPointsDistance";
+	static const std::string kGenerateDebugFileTag				= "generateDbugFile";
+	static const std::string kRemoveTrianglesTag				= "removeBadTriangles";
+	static const std::string kCheckOrientaionsTag				= "checkOrientations";
+	static const std::string kDissuasive						= "dissuasive";
+	static const std::string kDestinationSeparation				= "destinationSeparation";
+	static const std::string kNoStop							= "noStop";
+	static const std::string kNoParking							= "noParking";
+	static const std::string kAlternate							= "alternate";
+	static const std::string kMarkingQuality					= "quality";
 
-
-	;
+	static const std::string kTTag								= "t";
+	static const std::string kYOffsetTag						= "yOffset";
+	static const std::string kDirInTag							= "directionIn";
+	static const std::string kDirOutTag							= "directionOut";
+	static const std::string kIdTag								= "id";
 }

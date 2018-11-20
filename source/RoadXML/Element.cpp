@@ -110,6 +110,9 @@ namespace RoadXML
 		if (tagName == k3DRoadsGenerationElementTag)		return new Generate3DRoadsElement();
 		if (tagName == kSolExportOptionsElementTag)			return new SolExportOptionsElement();
 
+		if (tagName == kProfileModifierTag)			return new ProfileModifierElement();
+		if (tagName == kBorderModifierTag)			return new BorderModifierElement();
+		if (tagName == kBorderOffsetTag)			return new BorderOffsetElement();
 
 		return NULL;// Unknown element
 	}

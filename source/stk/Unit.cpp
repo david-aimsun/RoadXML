@@ -205,6 +205,7 @@ stk::DecritUnite stk::ToutesLesUnites[] =
 	{"km"			,"km"			,1000							, 0		, TDimLength},//stk::TUnitKiloMetre,
 	{"inch"			,"pouce"		,0.0254							, 0		, TDimLength}, //stk::TUnitInch
 	{"feet"			,"pied"			,0.3048							, 0		, TDimLength}, //stk::TUnitFeet
+	{"yard"			,"yard"			,0.9144							, 0		, TDimLength}, //stk::TUnitYard
 	{"mile"			,"mile"			,1609.344						, 0		, TDimLength}, //stk::TUnitMile
 // SURFACE															
 	{"m²"			,"m²"			,1								, 0		, TDimSurface},//stk::TUnitMetre2

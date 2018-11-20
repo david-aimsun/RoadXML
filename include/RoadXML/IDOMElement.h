@@ -5,8 +5,8 @@
 #include "CountedPtr.h"
 #include <string>
 
-/*! IDOMElement is the abstract representation of an XML element.
-	The name, attributes and children of an XML element are accessible through this interface.
+/*! IDOMElement is the abstract representation of an XML element.*/
+/*! The name, attributes and children of an XML element are accessible through this interface.
 */
 class IDOMElement : public CountedObject
 {

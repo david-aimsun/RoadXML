@@ -79,6 +79,7 @@ enum t_unit {
 	TUnitKiloMetre,
 	TUnitInch,
 	TUnitFeet,
+	TUnitYard,
 	TUnitMile,
 // SURFACE
 	TUnitMetre2,

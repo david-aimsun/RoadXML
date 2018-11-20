@@ -41,7 +41,18 @@ namespace RoadXML
 	class ROADXML_API MarkingElement : public Element
 	{
 	public:
-		MarkingElement() : mWidth(0), mLineLength(0), mTotLength(0), mDoubleMarking(false) {}
+		MarkingElement() :
+			mWidth(0),
+			mLineLength(0),
+			mTotLength(0),
+			mDoubleMarking(false),
+			mDissuasive(false),
+			mDestinationSeparation(false),
+			mNoStop(false),
+			mNoParking(false),
+			mAlternate(false),
+			mQuality(1.0)
+		{}
 
 		virtual const std::string&	GetName() const { return mName; }
 		virtual void				SetName( const std::string& name, SubNetworkElement* parent );
@@ -59,6 +70,12 @@ namespace RoadXML
 		CountedPtr<UVMappingElement> mUVMapping;
 
 		bool mDoubleMarking;
+		bool mDissuasive;
+		bool mDestinationSeparation;
+		bool mNoStop;
+		bool mNoParking;
+		bool mAlternate;
+		double mQuality;
 
 		virtual const std::string&	GetTagName() const{ return kMarkingTag; }
 		virtual	bool				LoadFromXMLElement(IDOMElement* iDOMElem, IDOMParser* parser);

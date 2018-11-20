@@ -29,12 +29,29 @@ IDOMElement* RoadXML::PortionElement::BuildXMLElement(IDOMParser* parser)
 	elementOut->SetStringAttribute(kStartProfile, mStartProfileName);
 	elementOut->SetStringAttribute(kEndProfile, mEndProfileName);
 
+	if(mProfileModifier)
+		elementOut->AddChild( mProfileModifier->BuildXMLElement(parser) );
+
 	return elementOut;
 }
 
 bool RoadXML::PortionElement::LoadChild( IDOMElement* childElement, IDOMParser* parser )
 {
-	return false;
+	const std::string& tagName = childElement->GetTagName();
+
+	CountedPtr<Element> newElement = CreateElement(tagName);
+	if (newElement &&
+		newElement->LoadFromXMLElement(childElement, parser))
+	{
+		if (tagName == kProfileModifierTag)
+		{
+			mProfileModifier = static_cast<ProfileModifierElement*>(newElement.Get());
+		}
+	}
+	else
+		return false;
+
+	return true;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////

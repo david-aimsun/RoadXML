@@ -626,7 +626,7 @@ double stk::Signale(stk::t_Signale type, double x)
 	//it can be used in cases where it is important to minimize the "jerk"
 		return -(sin(2*M_PI*x)/(2*M_PI)) + x;
 	case TExponentiel:
-		return (exp(x) - 1) / (exp(1.0) - 1);
+		return expm1(x) / expm1(1.0);
 	}
 
 	return 0;
@@ -638,3 +638,87 @@ double stk::Signale(stk::t_Signale type, double y1, double y2, double x1, double
 		return y2;
 	return y1 + (y2 - y1)*Signale(type, (x - x1) / (x2 - x1));
 }
+
+
+////-----------------------------------------------------------------------------------------------------------------
+////	Naive FFT Implementation : to be refined
+////-----------------------------------------------------------------------------------------------------------------
+void stk::fastFourierTransform(const TComplexSequence &sequence, TComplexSequence &result, bool inverse)
+{
+	size_t sequenceSize = sequence.size();
+	double dSequenceSize = static_cast<double>(sequenceSize);
+	result.resize(sequenceSize);
+	for (size_t i = 0; i < sequenceSize; ++i)
+	{
+		result[i].first = 0;
+		result[i].second = 0;
+		for (size_t j = 0; j < sequenceSize; ++j)
+		{
+			double angle = -(inverse ? -2. : 2.) * M_PI * static_cast<double>(i)* static_cast<double>(j) / dSequenceSize;
+			double cosAngle = cos(angle);
+			double sinAngle = sin(angle);
+			result[i].first += sequence[j].first * cosAngle - sequence[j].second * sinAngle;
+			result[i].second += sequence[j].first * sinAngle + sequence[j].second * cosAngle;
+		}
+		if (inverse)
+		{
+			result[i].first /= dSequenceSize;
+			result[i].second /= dSequenceSize;
+		}
+	}
+}
+
+////-----------------------------------------------------------------------------------------------------------------
+////	FFT code taken from https://www.programming-techniques.com/2013/05/calculation-of-discrete-fourier.html
+////-----------------------------------------------------------------------------------------------------------------
+//void stk::fastFourierTransform(const TComplexSequence &sequence, TComplexSequence &result, bool inverse)
+//{
+//	size_t sequenceSize = sequence.size();
+//	size_t n1 = 1;
+//	size_t n2 = n1;
+//	size_t log2Size = log2(sequence.size());
+//
+//	result = sequence;		//	Copy the sequence
+//	for (size_t k = 0; k < log2Size; ++k)
+//	{
+//		n2 = n1;
+//		n1 <<= 1;
+//
+//		double angle = (inverse ? (M_PI * 2.0) : (-M_PI * 2.0)) / static_cast<double>(n1);
+//		double wtmp = sin(0.5 * angle);
+//		std::pair<double, double> wp(-2.0*wtmp*wtmp, sin(angle));
+//		std::pair<double, double> w(1.0, 0.0);
+//
+//		for (size_t m = 0; m < n2; ++m)
+//		{
+//			for (size_t i = m; i < sequenceSize; i += n1)
+//			{
+//				size_t j = i + n2;
+//				std::pair<double, double> temp(
+//					(w.first * result[j].first) - (w.second * result[j].second),
+//					(w.first * result[j].second) + (w.second * result[j].first));
+//
+//				//	result[j] = result[i] - temp;
+//				result[j].first = result[i].first - temp.first;
+//				result[j].second = result[i].second - temp.second;
+//
+//				//	result[i] += temp;
+//				result[i].first += temp.first;
+//				result[i].second += temp.second;
+//			}
+//			//	w += w*wp;
+//			wtmp = w.first;
+//			w.first += (w.first * wp.first) - (w.second * wp.second);
+//			w.second += (w.second * wp.first) + (wtmp * wp.second);
+//		}
+//	}
+//	if (inverse)
+//	{
+//		double scale = 1.0 / static_cast<double>(sequenceSize);
+//		for (auto &c : result)
+//		{
+//			c.first *= scale;
+//			c.second *= scale;
+//		}
+//	}
+//}

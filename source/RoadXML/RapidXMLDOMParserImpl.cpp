@@ -3,7 +3,6 @@
 #include "RapidXMLDOMParserImpl.h"
 #include "RapidXMLDOMElementImpl.h"
 
-#include "Transcode.h"
 #include "RoadXML/RoadXMLTags.h"
 #include "RoadXML/RoadXMLElements.h"
 #include <algorithm>

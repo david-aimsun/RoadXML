@@ -121,11 +121,15 @@ std::wstring stk::GetApplicationPathW()
 	wchar_t appName[1024];
 	::GetModuleFileNameW(NULL, appName, 1024);
 
+	wchar_t fullPath[1024];
+	//WCHAR* lppPart = { NULL };
+	GetFullPathNameW(appName, 1024, fullPath, NULL);
+
 	wchar_t drive[32];
 	wchar_t dir[1024];
 	wchar_t fname[1024];
 	wchar_t ext[32];
-	_wsplitpath(appName, drive, dir, fname, ext);
+	_wsplitpath(fullPath, drive, dir, fname, ext);
 
 	std::wstring applicationPath(drive);
 	applicationPath += std::wstring(dir);
@@ -186,9 +190,7 @@ const wchar_t* stk::WithoutExtension(const wchar_t* Name)
 	wchar_t dir[FILENAME_MAX];
 	wchar_t fname[FILENAME_MAX];
 	wchar_t ext[FILENAME_MAX];
-#ifdef WIN32
 	_wsplitpath(Name, drive, dir, fname, ext);
-#endif
 	Result = std::wstring(drive) + dir + fname;
 	return Result.c_str();
 }
@@ -214,9 +216,7 @@ const wchar_t* stk::JustDirName(const wchar_t *Name)
 	wchar_t dir[FILENAME_MAX];
 	wchar_t fname[FILENAME_MAX];
 	wchar_t ext[FILENAME_MAX];
-#ifdef WIN32
 	_wsplitpath(Name, drive, dir, fname, ext);
-#endif
 	Result = std::wstring(drive) + dir;
 	return Result.c_str();
 }

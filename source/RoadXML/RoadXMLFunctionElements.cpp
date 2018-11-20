@@ -199,6 +199,9 @@ const RoadXML::PolyLineElement::EType RoadXML::PolyLineElement::ToEType(const st
 	if (strTypeValue == "spline")
 		return eSpline;
 
+	if (strTypeValue == "bezier")
+		return eBezier;
+
 	return eSegment;
 }
 
@@ -211,6 +214,8 @@ const std::string RoadXML::PolyLineElement::ToText(const RoadXML::PolyLineElemen
 		return "segment";
 	case eSpline:
 		return "spline";
+	case eBezier:
+		return "bezier";
 	}
 }
 

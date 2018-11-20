@@ -19,6 +19,12 @@ stk::InertialMatrix::InertialMatrix() :
 	massSolid(0)
 {}
 
+stk::InertialMatrix::InertialMatrix(const InertialMatrix& other) :
+data(other.data),
+posCoG(other.posCoG),
+massSolid(other.massSolid)
+{}
+
 
 /*stk::InertialMatrix::InertialMatrix(const Solide& S) :
 	data(3,3), //met la bonne taille et des 0 partout

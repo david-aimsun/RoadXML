@@ -5,6 +5,7 @@
 #include "RoadXMLTags.h"
 #include "RoadXMLClippedDataElements.h"
 #include "RoadXML/RoadXMLCurveElements.h"
+#include "RoadXML/RoadXMLModifierElement.h"
 #include "HashVector.h"
 #include "CountedPtr.h"
 #include "stk/Macro.h"
@@ -18,7 +19,7 @@ namespace RoadXML
 	class ROADXML_API PortionElement : public Element
 	{
 	public:
-		PortionElement():mEndDistance(0) {}
+		PortionElement():mEndDistance(0), mProfileModifier(nullptr) {}
 
 		virtual const std::string&	GetName() const { return mName; }
 		virtual void				SetName( const std::string& name ) {mName=name;}
@@ -29,21 +30,23 @@ namespace RoadXML
 		virtual const std::string&	GetEndProfileName() const { return mEndProfileName; }
 		virtual void				SetEndProfileName( const std::string& name ) {mEndProfileName=name;}
 
-		//! Distance on the XY curve.
-		/*! To get the start distance, check the previous portion.
-			If there's none, then it's 0
-		*/
-		double mEndDistance;
-
 		virtual const std::string&	GetTagName() const{ return kPortionTag; }
 		virtual	bool				LoadFromXMLElement(IDOMElement* iDOMElem, IDOMParser* parser);
 		virtual IDOMElement*		BuildXMLElement(IDOMParser*);
+
+		//! Distance on the XY curve.
+		/*! To get the start distance, check the previous portion.
+		If there's none, then it's 0
+		*/
+		double mEndDistance;
 
 	protected:
 		std::string mName;
 
 		std::string mStartProfileName;
 		std::string mEndProfileName;
+
+		CountedPtr<ProfileModifierElement> mProfileModifier;
 
 		virtual ~PortionElement(){}
 

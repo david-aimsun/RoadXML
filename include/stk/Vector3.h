@@ -17,6 +17,7 @@ class STK_API Vector3
 public:
 	Vector3();
 	Vector3(const double xx, const double yy, const double zz);
+	Vector3(const Vector3& other);
 	//! return the norm of the vector
 	double getNorm() const;
 	//! return the square of the norm of the vector

@@ -196,7 +196,7 @@ namespace RoadXML
 		//! Set the mass to gNoMass to have a static object.
 		static const double gNoMass;
 
-		ClippedDataElement() : mMass(gNoMass), mSequenceOrientation(0) {}
+		ClippedDataElement() : mMass(gNoMass), mSequenceOrientation(0), mIsSequenceAsOne(false) {}
 
 		virtual const std::string&	GetName() const { return mName; }
 		virtual void				SetName( const std::string& name ) {mName=name;}
@@ -205,6 +205,8 @@ namespace RoadXML
 		virtual void				SetMass( double mass ) {mMass=mass;}
 		virtual const double		GetSequenceOrientation() const { return mSequenceOrientation; }
 		virtual void				SetSequenceOrientation(double sequenceOrientation) { mSequenceOrientation = sequenceOrientation; }
+		virtual bool				IsSequenceAsOne()const {return mIsSequenceAsOne; }
+		virtual void				SetSequenceAsOne(bool asOne){ mIsSequenceAsOne = asOne; }
 
 		CountedPtr<SequenceElement>			mSequenceX;
 		CountedPtr<SequenceElement>			mSequenceY;
@@ -230,6 +232,8 @@ namespace RoadXML
 		/*! Orientation in Radian, defined in [0, 2*PI]
 		*/
 		double mSequenceOrientation;
+
+		bool mIsSequenceAsOne;
 
 		virtual ~ClippedDataElement(){}
 

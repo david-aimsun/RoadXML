@@ -13,7 +13,7 @@
 class ROADXML_API CountedObject
 {
 protected:
-	CountedObject(void): mRefCount(0) {}
+	CountedObject(): mRefCount(0) {}
 	virtual ~CountedObject(){assert(mRefCount == 0);}
 	
 public:
@@ -22,6 +22,13 @@ public:
 	virtual size_t	AddRef(){ return ++mRefCount; }
 	virtual size_t	Release()
 	{
+		if (mRefCount == 0)
+		{
+			//CTNotify("ERROR: TComponent::Release() called with ref count already 0");
+			delete this;
+			return 0;
+		}
+
 		size_t unreleasedCount = --mRefCount;
 
 		if (unreleasedCount == 0)

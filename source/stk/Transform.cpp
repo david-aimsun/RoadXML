@@ -148,7 +148,7 @@ Vector3 stk::Transform::applyRotation(const Vector3& P) const
 
 Transform& stk::Transform::operator= (const Matrix& mat)
 {
-	assert(sizei==4 && sizei==4);
+	assert(sizei==4 && sizej==4);
 	assert(mat.sizeJ()==4 && mat.sizeI()==4);
 
 	Matrix::operator=(mat);
@@ -194,7 +194,7 @@ bool stk::Transform::inverse()
     unsigned int i,j,k,l,ll;
     unsigned int icol = 0;
     unsigned int irow = 0;
-    double temp, pivinv, dum, big;
+    double temp, dum;
 
     // copy in place this may be unnecessary
     //*this = mat;
@@ -203,7 +203,7 @@ bool stk::Transform::inverse()
 
     for(i=0;i<4;i++)
     {
-       big=0.0;
+       double big=0.0;
        for (j=0; j<4; j++)
           if (ipiv[j] != 1)
              for (k=0; k<4; k++)
@@ -231,7 +231,7 @@ bool stk::Transform::inverse()
        if (operator()(icol,icol) == 0)
           return false;
 
-       pivinv = 1.0/operator()(icol,icol);
+       double pivinv = 1.0/operator()(icol,icol);
        operator()(icol,icol) = 1;
        for (l=0; l<4; l++) operator()(icol,l) *= pivinv;
        for (ll=0; ll<4; ll++)

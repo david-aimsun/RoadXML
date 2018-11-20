@@ -11,6 +11,7 @@ class STK_API InertialMatrix
 {
 public:	
 	InertialMatrix();
+	InertialMatrix(const InertialMatrix& other);
 	//InertialMatrix(const Solide& S);
 	InertialMatrix(double Ixx, double Iyy,double Izz, const Vector3& PosCoG, double Masse);
 	InertialMatrix(double Ixx, double Iyy,double Izz,
@@ -35,7 +36,7 @@ public:
 	friend STK_API Vector3 computeAngularAccel(const InertialMatrix& MI, const Vector3& Torque);
 
 private:
- Vector3 posCoG;
+	Vector3 posCoG;
 	double massSolid;
 	Matrix data;
 };

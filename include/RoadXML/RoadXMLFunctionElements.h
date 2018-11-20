@@ -122,6 +122,7 @@ namespace RoadXML
 		{
 			eSegment = 0,
 			eSpline,	// If EType change, think about ToEType and ToText functions changes
+			eBezier
 		};
 		static const EType ToEType(const std::string & strTypeValue);
 		static const std::string ToText(const EType & eTypeValue);

@@ -123,7 +123,6 @@ std::string Color::name() const
 	int r = static_cast<int>(red * 255);
 	int g = static_cast<int>(green *255);
 	int b = static_cast<int>(blue *255);
-	int hexcolor = (r << 16) + (g << 8) + b;
 	std::ostringstream sred;
 	sred << std::setfill('0') << std::setw(2) << std::hex << r;
 	std::ostringstream sgreen;

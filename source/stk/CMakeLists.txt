@@ -1,13 +1,11 @@
 
 
 IF(WIN32)
-	ADD_DEFINITIONS(-DSTK_EXPORTS)
-	set (FILETOOLS WIN_FileTools.cpp)
-	TARGET_LINK_LIBRARIES(stk Shlwapi.lib Dbghelp.lib PsApi.lib)
+ADD_DEFINITIONS(-DSTK_EXPORTS)
+set (FILETOOLS WIN_FileTools.cpp)
 ELSE(WIN32)
-	set (FILETOOLS UNIX_FileTools.cpp)
+set (FILETOOLS UNIX_FileTools.cpp)
 ENDIF(WIN32)
-
 
 ADD_LIBRARY(stk SHARED
 ../../include/stk/Box2.h
@@ -51,6 +49,10 @@ ADD_LIBRARY(stk SHARED
 	Vector2.cpp
 	Vector3.cpp
 )
+
+IF(WIN32)
+	TARGET_LINK_LIBRARIES(stk Shlwapi.lib)
+ENDIF(WIN32)
 
 install (TARGETS stk DESTINATION lib)
 install (DIRECTORY ../../include/stk DESTINATION include)

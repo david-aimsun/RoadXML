@@ -123,6 +123,11 @@ Vector3::Vector3(const double xx, const double yy, const double zz)
 : x(xx), y(yy), z(zz)
 { }
 
+Vector3::Vector3(const Vector3& other)
+	: x(other.x), y(other.y), z(other.z)
+{ }
+
+
 double Vector3::getNorm() const
 {
 	return sqrt(x*x + y*y + z*z);;

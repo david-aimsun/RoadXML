@@ -123,6 +123,14 @@ bool RoadXML::MarkingElement::LoadFromXMLElement(IDOMElement* elem, IDOMParser* 
 	elem->GetBooleanAttribute(kDoubleMarkingTag, mDoubleMarking);
 	elem->GetStringAttribute(kMaterialNameTag, mMaterialName);
 
+	elem->GetBooleanAttribute(kDissuasive, mDissuasive);
+	elem->GetBooleanAttribute(kDestinationSeparation, mDestinationSeparation);
+	elem->GetBooleanAttribute(kNoStop, mNoStop);
+	elem->GetBooleanAttribute(kNoParking, mNoParking);
+	elem->GetBooleanAttribute(kAlternate, mAlternate);
+
+	elem->GetDoubleAttribute(kMarkingQuality, mQuality);
+
 	LoadChildren( elem, parser );
 
 	return true;
@@ -140,6 +148,14 @@ IDOMElement* RoadXML::MarkingElement::BuildXMLElement(IDOMParser* parser)
 	elementOut->SetStringAttribute(kRightToLeftTag, mRightToLeft);
 	elementOut->SetBooleanAttribute(kDoubleMarkingTag, mDoubleMarking);
 	elementOut->SetStringAttribute(kMaterialNameTag, mMaterialName);
+
+	elementOut->SetBooleanAttribute(kDissuasive, mDissuasive);
+	elementOut->SetBooleanAttribute(kDestinationSeparation, mDestinationSeparation);
+	elementOut->SetBooleanAttribute(kNoStop, mNoStop);
+	elementOut->SetBooleanAttribute(kNoParking, mNoParking);
+	elementOut->SetBooleanAttribute(kAlternate, mAlternate);
+
+	elementOut->SetDoubleAttribute(kMarkingQuality, mQuality);
 
 	//elementOut->AddChild(mMaterial->BuildXMLElement(parser));
 	elementOut->AddChild(mUVMapping->BuildXMLElement(parser));
